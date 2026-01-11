@@ -10,10 +10,9 @@
   <meta property="og:title" content="Владимир Николенко - бизнес-трекер" />
   <meta property="og:description" content="Система управления и исполнения: цифры, план-факт, ответственность, ритм." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/og.jpg" />
   <meta property="og:locale" content="ru_RU" />
 
-  <link rel="icon" href="assets/favicon.png" />
+  <link rel="icon" href="./favicon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +51,6 @@
       --h-font: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       --b-font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-      /* scroll-driven vars */
       --scroll: 0;
       --bgShiftX: 0px;
       --bgShiftY: 0px;
@@ -74,7 +72,6 @@
       overflow-x:hidden;
     }
 
-    /* grid layer that subtly moves with scroll */
     body:before{
       content:"";
       position:fixed;
@@ -103,6 +100,8 @@
     a{ color:inherit; text-decoration:none; }
     .container{ width:min(var(--max), calc(100% - var(--pad)*2)); margin:0 auto; }
 
+    section{ padding: clamp(34px, 5.2vw, 64px) 0; }
+
     .top{
       position:sticky;
       top:0;
@@ -118,6 +117,7 @@
       gap:16px;
       padding: 14px 0;
     }
+
     .brand{
       display:flex;
       align-items:center;
@@ -127,11 +127,20 @@
     .brand__mark{
       width:38px; height:38px;
       border-radius: 12px;
-      background:
-        radial-gradient(14px 14px at 30% 35%, rgba(191,199,213,.85), transparent 60%),
-        linear-gradient(135deg, rgba(11,61,145,.9), rgba(11,93,75,.85));
-      box-shadow: 0 14px 40px rgba(0,0,0,.35);
       border:1px solid rgba(191,199,213,.18);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .brand__mark img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      padding:6px;
     }
     .brand__txt{
       display:flex;
@@ -228,8 +237,6 @@
       box-shadow: 0 0 0 4px rgba(11,93,75,.16);
     }
 
-    section{ padding: clamp(34px, 5.2vw, 64px) 0; }
-
     .hero{ padding-top: clamp(20px, 3.2vw, 36px); }
     .hero__grid{
       display:grid;
@@ -251,7 +258,7 @@
       font-weight: 700;
       margin:0;
       letter-spacing: -0.6px;
-      font-size: clamp(28px, 3.6vw, 46px);
+      font-size: clamp(26px, 3.2vw, 44px);
       line-height: 1.05;
     }
 
@@ -399,7 +406,6 @@
       line-height:1.45;
     }
 
-    /* chips block */
     .chipsWrap{
       margin-top: 14px;
       border-radius: var(--radius2);
@@ -454,7 +460,6 @@
       box-shadow: 0 16px 44px rgba(0,0,0,.28);
     }
 
-    /* list + bullets */
     .list{
       margin: 12px 0 0;
       padding:0;
@@ -492,7 +497,6 @@
       box-shadow: 0 0 0 6px rgba(11,61,145,.14);
     }
 
-    /* checkboxes for "опыт" blocks */
     .tickbox{
       margin-top: 4px;
       width: 16px;
@@ -521,28 +525,14 @@
       box-shadow: 0 0 0 6px rgba(11,93,75,.12);
     }
 
-    /* green/red accents for two cards */
-    .card--green:before{
-      background: radial-gradient(closest-side, rgba(11,93,75,.22), transparent 62%);
-    }
-    .card--green{
-      border-color: rgba(11,93,75,.28);
-    }
-    .card--green:hover{
-      border-color: rgba(11,93,75,.36);
-    }
+    .card--green:before{ background: radial-gradient(closest-side, rgba(11,93,75,.22), transparent 62%); }
+    .card--green{ border-color: rgba(11,93,75,.28); }
+    .card--green:hover{ border-color: rgba(11,93,75,.36); }
 
-    .card--red:before{
-      background: radial-gradient(closest-side, rgba(122,31,43,.22), transparent 62%);
-    }
-    .card--red{
-      border-color: rgba(122,31,43,.30);
-    }
-    .card--red:hover{
-      border-color: rgba(122,31,43,.40);
-    }
+    .card--red:before{ background: radial-gradient(closest-side, rgba(122,31,43,.22), transparent 62%); }
+    .card--red{ border-color: rgba(122,31,43,.30); }
+    .card--red:hover{ border-color: rgba(122,31,43,.40); }
 
-    /* reveal */
     .reveal{
       opacity: 0;
       transform: translateY(14px);
@@ -553,7 +543,6 @@
       transform: translateY(0);
     }
 
-    /* Roadmap */
     .roadmap{
       border-radius: var(--radius);
       border:1px solid rgba(42,52,64,.78);
@@ -590,13 +579,9 @@
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='120' viewBox='0 0 1200 120'%3E%3Cpath d='M0,70 C120,10 240,110 360,50 C480,-10 600,120 720,60 C840,0 960,110 1080,50 C1140,20 1170,35 1200,55' fill='none' stroke='rgba(191,199,213,0.22)' stroke-width='2'/%3E%3C/svg%3E") center/cover no-repeat;
       pointer-events:none;
       opacity:.95;
-      filter: blur(.1px);
     }
 
-    .step{
-      position:relative;
-      padding-top: 10px;
-    }
+    .step{ position:relative; padding-top: 10px; }
     .stepCard{
       border-radius: 18px;
       border:1px solid rgba(42,52,64,.78);
@@ -660,7 +645,6 @@
       line-height: 1.45;
     }
 
-    /* Formats section visual separation */
     .formats{
       border-radius: var(--radius);
       border:1px solid rgba(42,52,64,.78);
@@ -673,7 +657,6 @@
       position:relative;
       overflow:hidden;
     }
-
     .formatCardActions{
       margin-top: 14px;
       display:flex;
@@ -681,7 +664,6 @@
       flex-wrap: wrap;
     }
 
-    /* logo placeholders */
     .logoSlot{
       width: 56px;
       height: 56px;
@@ -691,8 +673,6 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      color: rgba(169,180,192,.85);
-      font-size: 12px;
       flex: 0 0 56px;
       overflow:hidden;
     }
@@ -717,10 +697,9 @@
       margin:0;
     }
 
-    /* brand logos grid */
     .logos{
       display:grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 12px;
     }
     .logoBox{
@@ -733,16 +712,75 @@
       justify-content:center;
       padding: 12px;
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      overflow:hidden;
     }
     .logoBox:hover{
       transform: translateY(-2px);
       border-color: rgba(191,199,213,.22);
       background: rgba(28,35,43,.70);
     }
-    .logoBox img{ max-width: 100%; max-height: 42px; opacity:.95; }
-    .logoBox span{ color: rgba(169,180,192,.9); font-size: 12px; }
+    .logoBox img{ max-width: 100%; max-height: 46px; opacity:.95; object-fit:contain; display:block; }
 
-    /* Contacts */
+    .reviewsHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:14px;
+    }
+    .reviewsSub{
+      color: rgba(169,180,192,.92);
+      margin-top:8px;
+      font-size: 13.5px;
+      line-height: 1.4;
+    }
+    .reviewsStrip{
+      display:grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(260px, 420px);
+      gap: 12px;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      padding: 12px 2px 16px;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 18px;
+    }
+    .reviewsStrip::-webkit-scrollbar{ height: 10px; }
+    .reviewsStrip::-webkit-scrollbar-thumb{
+      background: rgba(191,199,213,.18);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    .reviewsStrip::-webkit-scrollbar-track{ background: transparent; }
+
+    .reviewShot{
+      scroll-snap-align:start;
+      border-radius: 18px;
+      border:1px solid rgba(191,199,213,.14);
+      background: rgba(22,27,34,.52);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      height: 260px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .reviewShot:hover{
+      transform: translateY(-2px);
+      border-color: rgba(191,199,213,.24);
+      background: rgba(28,35,43,.70);
+    }
+    .reviewShot img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      background: rgba(0,0,0,.16);
+    }
+
     .contacts{
       border-radius: var(--radius);
       border:1px solid rgba(42,52,64,.82);
@@ -846,293 +884,25 @@
         top: 8px;
         width: 44px;
         height: calc(100% - 16px);
-        background:
-          linear-gradient(to bottom, rgba(191,199,213,.22), rgba(191,199,213,.06));
+        background: linear-gradient(to bottom, rgba(191,199,213,.22), rgba(191,199,213,.06));
         border-radius: 999px;
         opacity:.7;
       }
       .step{ padding-top: 0; }
       .contactsGrid{ grid-template-columns: 1fr; }
       .logos{ grid-template-columns: repeat(3, 1fr); }
+
+      .reviewsHead{ align-items:flex-start; flex-direction: column; }
+      .reviewsStrip{ grid-auto-columns: minmax(240px, 86vw); }
+      .reviewShot{ height: 220px; }
     }
 
     @media (prefers-reduced-motion: reduce){
       html{ scroll-behavior:auto; }
-      .btn, .card, .reveal, .chip, .stepCard, .logoBox{ transition:none !important; }
-      .btn:hover, .card:hover, .chip:hover, .stepCard:hover, .logoBox:hover{ transform:none; }
+      .btn, .card, .reveal, .chip, .stepCard, .logoBox, .reviewShot{ transition:none !important; }
+      .btn:hover, .card:hover, .chip:hover, .stepCard:hover, .logoBox:hover, .reviewShot:hover{ transform:none; }
       body:before{ background-position: 0 0; }
     }
-   /* Testimonials (images slider) */
-#reviews.section{
-  padding: var(--sec-pad, 56px) 0;
-}
-
-#reviews .secHead{
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 14px;
-}
-
-#reviews .secHead p{
-  margin: 8px 0 0 0;
-  color: rgba(169,180,192,.9);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.tWrap{
-  border: 1px solid rgba(42,52,64,.65);
-  background: rgba(22,27,34,.45);
-  border-radius: var(--radius2, 22px);
-  padding: 14px;
-  box-shadow: var(--shadow, 0 18px 50px rgba(0,0,0,.08));
-}
-
-.tTrack{
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(260px, 420px);
-  gap: 12px;
-
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 6px;
-
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(191,199,213,.25) transparent;
-}
-
-.tTrack::-webkit-scrollbar{ height: 10px; }
-.tTrack::-webkit-scrollbar-track{ background: transparent; }
-.tTrack::-webkit-scrollbar-thumb{
-  background: rgba(191,199,213,.18);
-  border-radius: 999px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-
-.tCardImg{
-  margin: 0;
-  scroll-snap-align: start;
-  border: 1px solid rgba(191,199,213,.14);
-  background: rgba(28,35,43,.42);
-  border-radius: 18px;
-  padding: 10px;
-  height: 220px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: .22s ease;
-}
-
-.tCardImg:hover{
-  transform: translateY(-2px);
-  border-color: rgba(191,199,213,.24);
-  background: rgba(28,35,43,.62);
-  box-shadow: var(--shadow2, 0 10px 30px rgba(0,0,0,.06));
-}
-
-.tCardImg img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
-/* Кнопка: делаем реально кнопкой, даже если у тебя другой базовый стиль */
-.btn.primary{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  padding: 12px 16px;
-  border-radius: 14px;
-
-  border: 1px solid rgba(11,61,145,.45);
-  background: rgba(11,61,145,.18);
-  color: rgba(231,237,245,.95);
-  text-decoration: none;
-
-  transition: .18s ease;
-}
-
-.btn.primary:hover{
-  transform: translateY(-1px);
-  border-color: rgba(11,61,145,.75);
-  background: rgba(11,61,145,.26);
-}
-
-@media (max-width: 980px){
-  #reviews .secHead{
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .tTrack{
-    grid-auto-columns: minmax(240px, 86vw);
-  }
-
-  .tCardImg{
-    height: 200px;
-  }
-}
-    /* ========== MEDIA: LOGO / BRANDS / REVIEWS ========== */
-
-.brandmark{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.brandmark img{
-  width:34px;
-  height:34px;
-  border-radius:10px;
-  object-fit:contain;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 10px 30px rgba(0,0,0,.20);
-}
-
-.brandmark span{
-  font-family: var(--font-title, "Montserrat", system-ui);
-  letter-spacing:-0.02em;
-}
-
-/* чтобы блоки не "ехали" - одинаковая сетка как везде */
-.section{
-  padding:56px 0;
-}
-
-.container{
-  width:min(var(--max, 1100px), calc(100% - 40px));
-  margin:0 auto;
-}
-
-/* REVIEWS: горизонтальная галерея со снапом */
-.reviews-head{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:16px;
-  margin-bottom:14px;
-}
-
-.reviews-sub{
-  color: rgba(255,255,255,.70);
-  margin-top:8px;
-}
-
-.reviews-strip{
-  display:flex;
-  gap:14px;
-  overflow-x:auto;
-  padding:10px 2px 16px;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  border-radius:18px;
-}
-
-.reviews-strip::-webkit-scrollbar{ height:10px; }
-.reviews-strip::-webkit-scrollbar-thumb{
-  background:rgba(255,255,255,.10);
-  border-radius:20px;
-}
-.reviews-strip::-webkit-scrollbar-track{
-  background:transparent;
-}
-
-.review-shot{
-  flex:0 0 auto;
-  width: clamp(220px, 28vw, 340px);
-  height: clamp(280px, 38vw, 420px);
-  border-radius:20px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 18px 50px rgba(0,0,0,.18);
-  overflow:hidden;
-  scroll-snap-align:start;
-  transform:translateZ(0);
-  transition:transform .18s ease, border-color .18s ease, background .18s ease;
-}
-
-.review-shot:hover{
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,.18);
-  background: rgba(255,255,255,.055);
-}
-
-.review-shot img{
-  width:100%;
-  height:100%;
-  object-fit:contain; /* важно: не режем скрин */
-  display:block;
-  background:rgba(0,0,0,.18);
-}
-
-/* BRANDS: сетка логотипов */
-.logo-grid{
-  display:grid;
-  grid-template-columns:repeat(5, minmax(0, 1fr));
-  gap:12px;
-}
-
-@media (max-width: 900px){
-  .logo-grid{ grid-template-columns:repeat(3, minmax(0, 1fr)); }
-}
-@media (max-width: 520px){
-  .logo-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
-}
-
-.logo-item{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:74px;
-  border-radius:18px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.10);
-  transition: transform .18s ease, border-color .18s ease, background .18s ease;
-}
-
-.logo-item:hover{
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,.18);
-  background: rgba(255,255,255,.05);
-}
-
-.logo-item img{
-  max-width:78%;
-  max-height:64%;
-  object-fit:contain;
-  filter: saturate(.95);
-  opacity:.95;
-}
-
-/* Предпринимательский опыт: картинка вместо кружка */
-.xp-media{
-  width:100%;
-  height:140px;
-  border-radius:18px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.10);
-  overflow:hidden;
-  margin-bottom:14px;
-}
-
-.xp-media img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
   </style>
 </head>
 
@@ -1141,7 +911,9 @@
     <div class="container">
       <div class="top__in">
         <a class="brand" href="#top" aria-label="На верх страницы">
-          <div class="brand__mark" aria-hidden="true"></div>
+          <div class="brand__mark" aria-hidden="true">
+            <img src="./logo.png" alt="" />
+          </div>
           <div class="brand__txt">
             <div class="brand__name">Владимир Николенко</div>
             <div class="brand__role">Бизнес-трекер</div>
@@ -1153,6 +925,7 @@
           <a href="#method">Метод</a>
           <a href="#formats">Форматы</a>
           <a href="#experience">Опыт</a>
+          <a href="#reviews">Отзывы</a>
           <a href="#contacts">Контакты</a>
         </nav>
 
@@ -1186,7 +959,7 @@
           </div>
 
           <div class="photo reveal" aria-label="Фото">
-            <img src="assets/photo.jpg" alt="Владимир Николенко" loading="eager" />
+            <img src="./photo.jpg" alt="Владимир Николенко" loading="eager" />
             <div class="photo__badge">
               <div>
                 <b>Владимир Николенко</b>
@@ -1275,7 +1048,7 @@
               <li><span class="bullet" aria-hidden="true"></span><span>Готовность управлять через цифры и ритм внедрения</span></li>
               <li><span class="bullet" aria-hidden="true"></span><span>Есть продукт и спрос, задача в управлении и масштабировании</span></li>
               <li><span class="bullet" aria-hidden="true"></span><span>Этика и репутация важнее "быстрых схем"</span></li>
-              <li><span class="bullet" aria-hidden="true"></span><span>Запрос "сделайте за меня" не подойдет, нужен режим исполнения</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Нужен режим исполнения, а не "сделайте за меня"</span></li>
             </ul>
           </div>
         </div>
@@ -1361,44 +1134,6 @@
       </div>
     </section>
 
-    <section>
-      <div class="container">
-        <div class="title">
-          <div>
-            <h2>Ключевые компетенции</h2>
-            <div class="subtitle">Суть проста: делаем управляемость через систему и доводим до исполнения.</div>
-          </div>
-        </div>
-
-        <div class="grid3">
-          <div class="card reveal">
-            <div class="metric" style="font-size:18px">Системность</div>
-            <div class="cap">Собираю управленческий скелет: роли, ответственность, правила, ритм.</div>
-          </div>
-          <div class="card reveal">
-            <div class="metric" style="font-size:18px">Оцифровка</div>
-            <div class="cap">Метрики, дашборды, план-факт. Решения принимаются не по ощущениям.</div>
-          </div>
-          <div class="card reveal">
-            <div class="metric" style="font-size:18px">Исполнение</div>
-            <div class="cap">Контрольные точки, встреча по ритму, доведение задач до результата.</div>
-          </div>
-          <div class="card reveal">
-            <div class="metric" style="font-size:18px">Диагностика</div>
-            <div class="cap">Нахожу узкие места и точки влияния, которые реально двигают результат.</div>
-          </div>
-          <div class="card reveal">
-            <div class="metric" style="font-size:18px">Команды</div>
-            <div class="cap">Настройка взаимодействия: кто за что отвечает, как измеряем, как контролируем.</div>
-          </div>
-          <div class="card reveal">
-            <div class="metric" style="font-size:18px">Инструменты</div>
-            <div class="cap">Внедрение управленческих инструментов под задачу, а не ради красоты.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="formats">
       <div class="container">
         <div class="title">
@@ -1448,8 +1183,8 @@
         <div class="grid3">
           <div class="card reveal">
             <div class="workHeader">
-              <div class="logoSlot" title="Сюда можно вставить логотип">
-                LOGO
+              <div class="logoSlot">
+                <img src="./smm.webp" alt="Nikolenko SMM" />
               </div>
               <div class="workHeaderText">
                 <p class="workName">Nikolenko SMM</p>
@@ -1466,8 +1201,8 @@
 
           <div class="card reveal">
             <div class="workHeader">
-              <div class="logoSlot" title="Сюда можно вставить логотип">
-                LOGO
+              <div class="logoSlot">
+                <img src="./bruno.webp" alt="BRUNO" />
               </div>
               <div class="workHeaderText">
                 <p class="workName">BRUNO</p>
@@ -1484,11 +1219,11 @@
 
           <div class="card reveal">
             <div class="workHeader">
-              <div class="logoSlot" title="Сюда можно вставить логотип">
-                LOGO
+              <div class="logoSlot">
+                <img src="./budemdud.webp" alt="Будем Дудь" />
               </div>
               <div class="workHeaderText">
-                <p class="workName">"Будем Дудь"</p>
+                <p class="workName">Будем Дудь</p>
                 <div class="pill" style="width:max-content">Оформление праздников</div>
               </div>
             </div>
@@ -1504,79 +1239,44 @@
         <div class="card reveal" style="margin-top:14px">
           <h2 style="margin-bottom:12px">Бренды, с которыми работал</h2>
           <div class="logos">
-            <div class="logoBox"><span>LOGO 1</span></div>
-            <div class="logoBox"><span>LOGO 2</span></div>
-            <div class="logoBox"><span>LOGO 3</span></div>
-            <div class="logoBox"><span>LOGO 4</span></div>
-            <div class="logoBox"><span>LOGO 5</span></div>
-            <div class="logoBox"><span>LOGO 6</span></div>
+            <div class="logoBox"><img src="./samolot.png" alt="Самолет" /></div>
+            <div class="logoBox"><img src="./askonajpg" alt="Asko" /></div>
+            <div class="logoBox"><img src="./mybox.webp" alt="MyBox" /></div>
+            <div class="logoBox"><img src="./dodo.webp" alt="Dodo" /></div>
+            <div class="logoBox"><img src="./myata.webp" alt="Мята" /></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="principles">
+    <section id="reviews">
       <div class="container">
-        <div class="title">
+        <div class="reviewsHead">
           <div>
-            <h2>Принципы</h2>
+            <h2>Отзывы</h2>
+            <div class="reviewsSub">Скриншоты. Листайте вправо.</div>
           </div>
+
+          <a class="btn btn--primary" href="https://t.me/+oySxZ-zEDowxY2Zi" target="_blank" rel="noopener">
+            Больше отзывов
+          </a>
         </div>
 
-        <div class="grid2">
-          <div class="card reveal">
-            <ul class="list">
-              <li><span class="bullet" aria-hidden="true"></span><span>Решения принимаются на основе цифр</span></li>
-              <li><span class="bullet" aria-hidden="true"></span><span>Ритм важнее разовых рывков</span></li>
-              <li><span class="bullet" aria-hidden="true"></span><span>План-факт как базовая дисциплина</span></li>
-              <li><span class="bullet" aria-hidden="true"></span><span>Если нет ответственного и срока, задачи нет</span></li>
-            </ul>
-          </div>
-
-          <div class="card reveal">
-            <ul class="list">
-              <li><span class="bullet" aria-hidden="true"></span><span>Управление должно быть спокойным, без героизма</span></li>
-              <li><span class="bullet" aria-hidden="true"></span><span>Фокус на точках влияния, а не на суете</span></li>
-              <li><span class="bullet" aria-hidden="true"></span><span>Сначала управляемость, потом масштабирование</span></li>
-              <li><span class="bullet" aria-hidden="true"></span><span>Результат закрепляется системой, а не мотивацией</span></li>
-            </ul>
-          </div>
+        <div class="reviewsStrip" aria-label="Галерея отзывов">
+          <div class="reviewShot"><img src="./review-01.jpg" alt="Отзыв 1"></div>
+          <div class="reviewShot"><img src="./review-02.jpg" alt="Отзыв 2"></div>
+          <div class="reviewShot"><img src="./review-03.jpg" alt="Отзыв 3"></div>
+          <div class="reviewShot"><img src="./review-04.jpg" alt="Отзыв 4"></div>
+          <div class="reviewShot"><img src="./review-05.jpg" alt="Отзыв 5"></div>
+          <div class="reviewShot"><img src="./review-06.jpg" alt="Отзыв 6"></div>
+          <div class="reviewShot"><img src="./review-07.jpg" alt="Отзыв 7"></div>
+          <div class="reviewShot"><img src="./review-08.jpg" alt="Отзыв 8"></div>
+          <div class="reviewShot"><img src="./review-09.jpg" alt="Отзыв 9"></div>
+          <div class="reviewShot"><img src="./review-10.jpg" alt="Отзыв 10"></div>
         </div>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-<!-- TESTIMONIALS -->
-<section id="reviews" class="section">
-  <div class="container">
-
-    <div class="reviews-head">
-      <div>
-        <h2 class="h2">Отзывы</h2>
-        <div class="reviews-sub">Скриншоты. Листайте вправо.</div>
-      </div>
-
-      <a class="btn" href="https://t.me/+oySxZ-zEDowxY2Zi" target="_blank" rel="noopener">
-        Больше отзывов
-      </a>
-    </div>
-
-    <div class="reviews-strip" aria-label="Галерея отзывов">
-      <div class="review-shot"><img src="./review-01.jpg" alt="Отзыв 1"></div>
-      <div class="review-shot"><img src="./review-02.jpg" alt="Отзыв 2"></div>
-      <div class="review-shot"><img src="./review-03.jpg" alt="Отзыв 3"></div>
-      <div class="review-shot"><img src="./review-04.jpg" alt="Отзыв 4"></div>
-      <div class="review-shot"><img src="./review-05.jpg" alt="Отзыв 5"></div>
-      <div class="review-shot"><img src="./review-06.jpg" alt="Отзыв 6"></div>
-      <div class="review-shot"><img src="./review-07.jpg" alt="Отзыв 7"></div>
-      <div class="review-shot"><img src="./review-08.jpg" alt="Отзыв 8"></div>
-      <div class="review-shot"><img src="./review-09.jpg" alt="Отзыв 9"></div>
-      <div class="review-shot"><img src="./review-10.jpg" alt="Отзыв 10"></div>
-    </div>
-
-  </div>
-</section>
-    
     <section id="contacts">
       <div class="container">
         <div class="title">
@@ -1636,7 +1336,9 @@
       <div class="foot">
         <div>
           <div class="brand" style="padding:0">
-            <div class="brand__mark" aria-hidden="true"></div>
+            <div class="brand__mark" aria-hidden="true">
+              <img src="./logo.png" alt="" />
+            </div>
             <div class="brand__txt">
               <div class="brand__name">Владимир Николенко</div>
               <div class="brand__role">Бизнес-трекер</div>
@@ -1657,10 +1359,8 @@
   </footer>
 
   <script>
-    // year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // reveal on scroll
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.isIntersecting) {
@@ -1671,7 +1371,6 @@
     }, { threshold: 0.14 });
     document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-    // scroll-driven background dynamics
     const root = document.documentElement;
     const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
@@ -1680,10 +1379,9 @@
       const max = Math.max(1, doc.scrollHeight - window.innerHeight);
       const t = clamp(window.scrollY / max, 0, 1);
 
-      // subtle motion
-      const shiftX = Math.round((t * 24 - 12) * 10) / 10;   // -12..12
-      const shiftY = Math.round((t * 30 - 15) * 10) / 10;   // -15..15
-      const grid = Math.round(t * 22 * 10) / 10;            // 0..22
+      const shiftX = Math.round((t * 24 - 12) * 10) / 10;
+      const shiftY = Math.round((t * 30 - 15) * 10) / 10;
+      const grid = Math.round(t * 22 * 10) / 10;
 
       root.style.setProperty("--scroll", t.toFixed(4));
       root.style.setProperty("--bgShiftX", shiftX + "px");
@@ -1693,9 +1391,8 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    // Contacts: generate message + links
-    const TG_USERNAME = "YOUR_TG_USERNAME";      // без @
-    const WA_PHONE = "79999999999";              // без +, только цифры
+    const TG_USERNAME = "YOUR_TG_USERNAME";
+    const WA_PHONE = "79999999999";
     const EMAIL = "youremail@example.com";
 
     const form = document.getElementById("leadForm");
@@ -1709,26 +1406,22 @@
       const contact = (fd.get("contact") || "").toString().trim();
       const message = (fd.get("message") || "").toString().trim();
 
-      const text =
+      return (
         "Привет! Меня зовут " + name + ".\n" +
         "Контакт для связи: " + contact + "\n\n" +
         "Коротко о ситуации:\n" + message + "\n\n" +
-        "Хочу записаться на бизнес-разбор.";
-
-      return text;
+        "Хочу записаться на бизнес-разбор."
+      );
     }
 
     function refreshLinks(){
       const text = buildText();
       const enc = encodeURIComponent(text);
 
-      // Telegram: deep link with start?message is unreliable, use share
-      tgLink.href = "https://t.me/" + TG_USERNAME + "?text=" + enc;
+      tgLink.href = "https://t.me/share/url?url=&text=" + enc;
 
-      // WhatsApp
       waLink.href = "https://wa.me/" + WA_PHONE + "?text=" + enc;
 
-      // Email
       const subject = encodeURIComponent("Запрос на бизнес-разбор");
       mailLink.href = "mailto:" + EMAIL + "?subject=" + subject + "&body=" + enc;
     }
@@ -1736,14 +1429,12 @@
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       refreshLinks();
-      // small UX hint without alerts
       const btn = form.querySelector("button[type='submit']");
       const old = btn.textContent;
       btn.textContent = "Готово, можно отправлять";
       setTimeout(() => btn.textContent = old, 1200);
     });
 
-    // initial links (empty text if form not filled)
     refreshLinks();
   </script>
 </body>
