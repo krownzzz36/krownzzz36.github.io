@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Владимир Николенко - one slide</title>
-  <meta name="description" content="One-slide представление: Владимир Николенко - операционный директор на аутсорсе и бизнес-инженер. Факты, цифры, компетенции." />
+  <title>Владимир Николенко - цифры и факты</title>
+  <meta name="description" content="Владимир Николенко - предприниматель-практик, человек-система. Цифры, опыт, компетенции в одном экране." />
 
-  <meta property="og:title" content="Владимир Николенко - one slide" />
-  <meta property="og:description" content="Сухие факты, цифры и опыт в одном экране." />
+  <meta property="og:title" content="Владимир Николенко - цифры и факты" />
+  <meta property="og:description" content="Один экран. Сухие факты, опыт, компетенции." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/og-one-slide.jpg" />
   <meta property="og:locale" content="ru_RU" />
@@ -19,27 +19,30 @@
     :root{
       --bg0:#0b0f14;
       --bg1:#0e141d;
+
       --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.10);
+      --card2:rgba(255,255,255,.09);
       --border:rgba(255,255,255,.14);
+
       --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.72);
+      --muted:rgba(255,255,255,.70);
       --dim:rgba(255,255,255,.55);
 
       --emerald:#2A6E57;
       --blue:#223a6b;
-      --silver:rgba(255,255,255,.85);
+      --silver:rgba(255,255,255,.86);
 
       --radius:22px;
       --radius2:16px;
       --shadow:0 18px 60px rgba(0,0,0,.55);
 
       --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      --max:1180px;
+      --max:1280px;
     }
 
     *{ box-sizing:border-box; }
     html, body{ height:100%; }
+
     body{
       margin:0;
       font-family:var(--font);
@@ -49,7 +52,7 @@
         radial-gradient(900px 600px at 82% 30%, rgba(42,110,87,.40), transparent 62%),
         radial-gradient(1200px 800px at 50% 100%, rgba(255,255,255,.07), transparent 60%),
         linear-gradient(160deg, var(--bg0), var(--bg1));
-      overflow:hidden; /* ключевое: никакой прокрутки */
+      overflow:hidden; /* один экран, без скролла */
     }
 
     .wrap{
@@ -58,88 +61,104 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:28px;
+      padding:22px;
     }
 
     .slide{
       width:min(var(--max), 100%);
-      height:min(720px, calc(100vh - 56px));
+      height:calc(100vh - 44px);
       border:1px solid var(--border);
       border-radius:var(--radius);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       box-shadow:var(--shadow);
-      position:relative;
       overflow:hidden;
-    }
-
-    .grain{
-      position:absolute; inset:0;
-      background-image:url("assets/grain.png");
-      opacity:.08;
-      pointer-events:none;
-      mix-blend-mode:overlay;
+      position:relative;
     }
 
     .inner{
       height:100%;
-      padding:28px;
+      padding:20px;
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
     }
 
+    /* ЛЕВАЯ КОЛОНКА */
     .left{
+      min-width:0;
       display:flex;
       flex-direction:column;
-      gap:14px;
-      min-width:0;
+      gap:12px;
     }
 
-    .right{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-      min-width:0;
-    }
-
-    .top{
+    .hero{
       border:1px solid var(--border);
       border-radius:var(--radius2);
       background:rgba(0,0,0,.18);
-      padding:18px;
-    }
-
-    .name{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
+      padding:14px;
+      display:grid;
+      grid-template-columns: 96px 1fr;
       gap:12px;
-      flex-wrap:wrap;
+      align-items:center;
     }
 
-    h1{
+    .avatar{
+      width:96px;
+      height:96px;
+      border-radius:18px;
+      border:1px solid var(--border);
+      overflow:hidden;
+      background:rgba(255,255,255,.04);
+      position:relative;
+    }
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .avatar:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(80px 80px at 20% 20%, rgba(255,255,255,.10), transparent 55%),
+        radial-gradient(90px 90px at 80% 80%, rgba(42,110,87,.12), transparent 60%);
+      pointer-events:none;
+    }
+
+    .titleRow{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .h1{
       margin:0;
-      font-size:clamp(26px, 3.2vw, 44px);
+      font-size:clamp(22px, 2.4vw, 34px);
       line-height:1.05;
       letter-spacing:-.02em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .role{
-      margin-top:10px;
-      font-size:clamp(14px, 1.4vw, 18px);
+    .sub{
+      margin:0;
       color:var(--muted);
-      line-height:1.35;
+      font-size:clamp(12px, 1.05vw, 14px);
+      line-height:1.25;
     }
 
-    .tagrow{
-      margin-top:12px;
+    .tags{
       display:flex;
-      gap:8px;
       flex-wrap:wrap;
+      gap:8px;
     }
 
     .tag{
-      padding:8px 10px;
+      padding:7px 10px;
       border:1px solid var(--border);
       border-radius:999px;
       background:rgba(255,255,255,.04);
@@ -148,270 +167,379 @@
       letter-spacing:.02em;
       white-space:nowrap;
     }
+    .tag.em{
+      border-color:rgba(42,110,87,.45);
+      background:rgba(42,110,87,.14);
+    }
+    .tag.bl{
+      border-color:rgba(34,58,107,.45);
+      background:rgba(34,58,107,.16);
+    }
 
-    .grid{
+    .kpiGrid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap:10px;
     }
 
-    .card{
+    .kpiCard{
       border:1px solid var(--border);
       border-radius:var(--radius2);
       background:rgba(0,0,0,.18);
-      padding:14px;
-      min-height:92px;
+      padding:12px;
+      min-width:0;
     }
 
     .kpi{
-      font-size:clamp(18px, 2.4vw, 28px);
-      font-weight:700;
-      letter-spacing:-.01em;
       margin:0;
+      font-size:clamp(16px, 1.9vw, 24px);
+      font-weight:800;
+      letter-spacing:-.01em;
+      line-height:1.05;
     }
-    .kpi small{
-      font-size:.65em;
-      font-weight:600;
-      color:var(--dim);
-    }
-    .caption{
-      margin-top:8px;
+
+    .kpiLbl{
+      margin-top:6px;
       font-size:12px;
       color:var(--muted);
-      line-height:1.35;
+      line-height:1.25;
+    }
+
+    .niches{
+      border:1px solid var(--border);
+      border-radius:var(--radius2);
+      background:rgba(0,0,0,.18);
+      padding:12px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-width:0;
+    }
+
+    .cap{
+      font-size:11px;
+      color:var(--dim);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+
+    .chipRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .chip{
+      padding:7px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    /* ПРАВАЯ КОЛОНКА */
+    .right{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
 
     .block{
       border:1px solid var(--border);
       border-radius:var(--radius2);
       background:rgba(0,0,0,.18);
-      padding:16px;
+      padding:12px;
+      min-width:0;
     }
 
-    .h{
+    .expGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:8px;
+    }
+
+    .exp{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      padding:10px;
+      display:grid;
+      grid-template-columns: 44px 1fr;
+      gap:10px;
+      align-items:center;
+      min-width:0;
+    }
+
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.25);
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--silver);
+      font-weight:800;
+      letter-spacing:.02em;
       font-size:12px;
-      color:var(--dim);
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      margin:0 0 10px 0;
     }
 
-    .facts{
+    .expTxt{ min-width:0; }
+    .expName{
       margin:0;
+      font-weight:800;
+      letter-spacing:-.01em;
       font-size:14px;
-      color:var(--text);
-      line-height:1.45;
+      line-height:1.15;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-    .facts b{ color:var(--silver); }
+    .expMeta{
+      margin-top:4px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.25;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .mini{
+      padding:4px 8px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      background:rgba(0,0,0,.20);
+      color:var(--silver);
+      white-space:nowrap;
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .skill{
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    .brandsRow{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      overflow:hidden;
+    }
+    .brand{
+      width:78px;
+      height:34px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--dim);
+      font-size:11px;
+      white-space:nowrap;
+      flex:0 0 auto;
+      padding:0 10px;
+    }
 
     .footer{
       margin-top:auto;
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:12px;
-      padding:10px 2px 0 2px;
+      gap:10px;
       color:var(--dim);
-      font-size:12px;
-    }
-    .footer a{
-      color:var(--silver);
-      text-decoration:none;
-      border-bottom:1px solid rgba(255,255,255,.25);
+      font-size:11px;
+      padding:0 2px;
+      align-items:center;
     }
 
-    .tools{
-      position:absolute;
-      right:16px;
-      top:16px;
-      display:flex;
-      gap:8px;
-      opacity:.85;
+    /* АДАПТИВ, но все равно один экран */
+    @media (max-width: 980px){
+      .inner{ grid-template-columns: 1fr; }
+      .slide{ height:calc(100vh - 44px); }
+      .kpiGrid{ grid-template-columns: repeat(3, 1fr); }
     }
-    .btn{
-      appearance:none;
-      border:1px solid var(--border);
-      background:rgba(0,0,0,.25);
-      color:var(--text);
-      padding:8px 10px;
-      border-radius:12px;
-      font-size:12px;
-      cursor:pointer;
-    }
-    .btn:hover{ background:rgba(255,255,255,.06); }
-
-    .note{
-      font-size:12px;
-      color:var(--dim);
-      line-height:1.35;
-      margin-top:10px;
-    }
-
-    @media (max-width: 920px){
-      .inner{ grid-template-columns:1fr; }
-      .slide{ height:min(820px, calc(100vh - 56px)); }
-      .grid{ grid-template-columns:1fr 1fr; }
-    }
-
-    @media (max-width: 560px){
-      .wrap{ padding:14px; }
-      .inner{ padding:16px; }
-      .grid{ grid-template-columns:1fr; }
-      .tools{ right:10px; top:10px; }
-    }
-
-    @media print{
-      body{ overflow:visible; background:#fff; color:#111; }
-      .wrap{ height:auto; padding:0; }
-      .slide{
-        height:auto;
-        border:1px solid #ddd;
-        border-radius:0;
-        box-shadow:none;
-        background:#fff;
-      }
-      .grain, .tools{ display:none !important; }
-      .card, .block, .top{ background:#fff; border-color:#ddd; }
-      .tag{ color:#111; border-color:#ddd; background:#fff; }
-      .role, .caption, .h, .footer, .note{ color:#444; }
-      a{ color:#111; border-bottom:1px solid #999; }
+    @media (max-width: 520px){
+      .wrap{ padding:12px; }
+      .inner{ padding:14px; gap:10px; }
+      .hero{ grid-template-columns: 78px 1fr; }
+      .avatar{ width:78px; height:78px; border-radius:16px; }
+      .kpiGrid{ grid-template-columns: repeat(2, 1fr); }
+      .brand{ width:70px; }
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <section class="slide" aria-label="One-slide presentation">
-      <div class="tools" aria-hidden="true">
-        <button class="btn" onclick="document.documentElement.requestFullscreen?.()">Full</button>
-        <button class="btn" onclick="window.print()">Print</button>
-      </div>
-
-      <div class="grain"></div>
-
+    <section class="slide" aria-label="Цифры и факты обо мне. Один экран.">
       <div class="inner">
+
+        <!-- LEFT -->
         <div class="left">
-          <div class="top">
-            <div class="name">
-              <h1>Владимир Николенко</h1>
-              <div class="tag">one-slide</div>
+
+          <div class="hero">
+            <div class="avatar">
+              <!-- ЗАМЕНИ НА СВОЕ ФОТО -->
+              <img src="assets/me.jpg" alt="Владимир Николенко" />
             </div>
 
-            <div class="role">
-              Операционный директор на аутсорсе и бизнес-инженер.<br>
-              Строю систему управления и исполнения: цифры, план-факт, ответственность, ритм.
-            </div>
+            <div class="titleRow">
+              <h1 class="h1">ВЛАДИМИР НИКОЛЕНКО</h1>
+              <p class="sub">Предприниматель-практик. Человек-система.</p>
 
-            <div class="tagrow">
-              <div class="tag">Регулярный менеджмент</div>
-              <div class="tag">Финмодели и план-факт</div>
-              <div class="tag">Операционка и KPI</div>
-              <div class="tag">Команда и роли</div>
-              <div class="tag">Воронки и конверсии</div>
-            </div>
-          </div>
-
-          <div class="grid">
-            <div class="card">
-              <p class="kpi">+26% <small>к среднемесячной выручке</small></p>
-              <div class="caption">Рост за 2024 год в проекте онлайн-школы (через систему управления и изменения в воронках).</div>
-            </div>
-
-            <div class="card">
-              <p class="kpi">+20-40% <small>к операц. прибыли</small></p>
-              <div class="caption">Оптимизация затрат, подрядчиков, управленческого ритма и метрик.</div>
-            </div>
-
-            <div class="card">
-              <p class="kpi">Заполни <small>цифру</small></p>
-              <div class="caption">Например: число проектов, бюджет в управлении, LTV, ROMI, средний чек, NPS.</div>
-            </div>
-
-            <div class="card">
-              <p class="kpi">Заполни <small>цифру</small></p>
-              <div class="caption">Например: сколько команд выстроено, сколько регламентов внедрено, срок результата.</div>
+              <div class="tags">
+                <span class="tag em">цифры</span>
+                <span class="tag bl">система управления</span>
+                <span class="tag">план-факт</span>
+                <span class="tag">KPI</span>
+                <span class="tag">рост</span>
+              </div>
             </div>
           </div>
 
-          <div class="block">
-            <p class="h">Что умею делать быстро</p>
-            <p class="facts">
-              1) Навожу управляемость: <b>цели - метрики - роли - ритм</b>.<br>
-              2) Собираю план-факт и финансовую модель, чтобы бизнес стал <b>предсказуемым</b>.<br>
-              3) Разворачиваю регулярный менеджмент: планёрки, отчётность, KPI, ответственность.<br>
-              4) Вшиваю маркетинг и продажи в цифры: воронки, конверсии, экономика решений.
-            </p>
-            <div class="note">Тут специально коротко: это не оффер, а "что я делаю руками".</div>
-          </div>
-        </div>
-
-        <div class="right">
-          <div class="block">
-            <p class="h">Контекст</p>
-            <p class="facts">
-              Формат работы: <b>операционный директор / бизнес-инженер</b>.<br>
-              Ниши: <b>онлайн-школы, edtech, сервисы, малый и средний бизнес</b>.<br>
-              Стиль: <b>жёсткая опора на факты</b>, без "мотивационных сказок".
-            </p>
-          </div>
-
-          <div class="block">
-            <p class="h">Ключевые компетенции</p>
-            <p class="facts">
-              Управление: <b>оргструктура, роли, регламенты, KPI</b>.<br>
-              Финансы: <b>P&L, ДДС, план-факт, unit-экономика</b>.<br>
-              Исполнение: <b>ритм, контроль, ответственность, дисциплина</b>.<br>
-              Рост: <b>воронки, конверсия, LTV, продуктовая матрица</b>.
-            </p>
+          <div class="kpiGrid">
+            <div class="kpiCard">
+              <p class="kpi">10 лет</p>
+              <div class="kpiLbl">в коммерции</div>
+            </div>
+            <div class="kpiCard">
+              <p class="kpi">7 лет</p>
+              <div class="kpiLbl">бизнес-опыта</div>
+            </div>
+            <div class="kpiCard">
+              <p class="kpi">4 года</p>
+              <div class="kpiLbl">бизнес-трекер</div>
+            </div>
+            <div class="kpiCard">
+              <p class="kpi">2530+ ч</p>
+              <div class="kpiLbl">в бизнес-разборах (команда М. Дашкиева)</div>
+            </div>
+            <div class="kpiCard">
+              <p class="kpi">330 млн ₽+</p>
+              <div class="kpiLbl">оборот проектов в год</div>
+            </div>
+            <div class="kpiCard">
+              <p class="kpi">Управлял</p>
+              <div class="kpiLbl">командами до 48 человек</div>
+            </div>
           </div>
 
-          <div class="block">
-            <p class="h">Факты одной строкой</p>
-            <p class="facts">
-              - Внедрял регулярный менеджмент и систему отчётности "с нуля".<br>
-              - Пересобирал финмодели и управленческие контуры в действующих проектах.<br>
-              - Оптимизировал подрядчиков и процессы с измеримым эффектом.
-            </p>
-          </div>
-
-          <div class="block">
-            <p class="h">Контакты и ссылка</p>
-            <p class="facts">
-              Сайт: <b><a href="index.html">главная страница</a></b><br>
-              Telegram: <b>@заполни</b><br>
-              Email: <b>заполни</b>
-            </p>
-            <div class="note">Если хочешь вообще "без контактов" - просто удаляешь этот блок.</div>
+          <div class="niches">
+            <div class="cap">Опыт в нишах</div>
+            <div class="chipRow">
+              <span class="chip">EDTECH</span>
+              <span class="chip">HoReCa</span>
+              <span class="chip">EVENT</span>
+              <span class="chip">DIGITAL-агентства</span>
+              <span class="chip">Консалтинг</span>
+              <span class="chip">FASHION</span>
+            </div>
           </div>
 
           <div class="footer">
-            <div>Обновлено: <span id="upd"></span></div>
-            <div>Открывается без прокрутки - один экран</div>
+            <div>Один экран. Без прокрутки.</div>
+            <div>Файл: one-slide.html</div>
           </div>
+
         </div>
+
+        <!-- RIGHT -->
+        <div class="right">
+
+          <div class="block">
+            <div class="cap">Предпринимательский опыт</div>
+
+            <div class="expGrid">
+              <div class="exp">
+                <div class="logo">SMM</div>
+                <div class="expTxt">
+                  <p class="expName">Nikolenko SMM</p>
+                  <div class="expMeta">
+                    <span class="mini">5+ лет</span>
+                    <span class="mini">LTV 3 года</span>
+                    <span class="mini">52,3% маржин.</span>
+                    <span class="mini">2 ч/нед на управл.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="exp">
+                <div class="logo">BR</div>
+                <div class="expTxt">
+                  <p class="expName">BRUNO - сеть пиццерий</p>
+                  <div class="expMeta">
+                    <span class="mini">4,5 года</span>
+                    <span class="mini">4 города</span>
+                    <span class="mini">франшиза за 3 года</span>
+                    <span class="mini">158 млн ₽+ в год</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="exp">
+                <div class="logo">BD</div>
+                <div class="expTxt">
+                  <p class="expName">БУДЕМ ДУДЬ - оформление праздников</p>
+                  <div class="expMeta">
+                    <span class="mini">3 года</span>
+                    <span class="mini">ТОП 3 из 48</span>
+                    <span class="mini">73% повторов</span>
+                    <span class="mini">43% маржин.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="cap">Ключевые компетенции</div>
+            <div class="skills">
+              <span class="skill">Системность</span>
+              <span class="skill">Оцифровка</span>
+              <span class="skill">Метрики</span>
+              <span class="skill">Выявление смыслов</span>
+              <span class="skill">Менеджмент</span>
+              <span class="skill">Найм и делегирование</span>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="cap">Бренды, с которыми работал</div>
+            <div class="brandsRow" aria-label="Логотипы брендов">
+              <!-- Вариант А: текстовые плашки (быстро)
+                   Вариант Б: вместо текста вставь <img src="assets/brands/x.png"> внутри .brand -->
+              <div class="brand">BRAND 1</div>
+              <div class="brand">BRAND 2</div>
+              <div class="brand">BRAND 3</div>
+              <div class="brand">BRAND 4</div>
+              <div class="brand">BRAND 5</div>
+              <div class="brand">BRAND 6</div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <!-- Если хочешь привязку к сайту, оставь ссылку на index.html в том же репо -->
+            <div><a href="index.html" style="color:rgba(255,255,255,.78); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.22);">перейти на сайт</a></div>
+            <div style="text-align:right;">Обнови ассеты: assets/me.jpg</div>
+          </div>
+
+        </div>
+
       </div>
     </section>
   </div>
-
-  <script>
-    // Автодата обновления (можешь удалить, если не нужно)
-    (function(){
-      const d = new Date();
-      const pad = (n) => String(n).padStart(2,'0');
-      const s = `${pad(d.getDate())}.${pad(d.getMonth()+1)}.${d.getFullYear()}`;
-      const el = document.getElementById('upd');
-      if(el) el.textContent = s;
-    })();
-
-    // Быстрый fullscreen по клавише F
-    window.addEventListener('keydown', (e) => {
-      if(e.key.toLowerCase() === 'f'){
-        document.documentElement.requestFullscreen?.();
-      }
-      if(e.key === 'Escape' && document.fullscreenElement){
-        document.exitFullscreen?.();
-      }
-    });
-  </script>
 </body>
 </html>
