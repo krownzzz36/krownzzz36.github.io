@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Владимир Николенко - цифры и факты</title>
-  <meta name="description" content="Владимир Николенко - предприниматель-практик, человек-система. Цифры, опыт, компетенции в одном экране." />
+  <meta name="description" content="Владимир Николенко - предприниматель-практик, человек-система. Цифры, ниши, опыт, компетенции, бренды. Один экран." />
 
   <meta property="og:title" content="Владимир Николенко - цифры и факты" />
-  <meta property="og:description" content="Один экран. Сухие факты, опыт, компетенции." />
+  <meta property="og:description" content="Один экран. Сухие факты: цифры, опыт, компетенции." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/og-one-slide.jpg" />
+  <meta property="og:image" content="assets/logo.png" />
   <meta property="og:locale" content="ru_RU" />
 
   <link rel="icon" href="assets/favicon.png" />
@@ -21,7 +21,6 @@
       --bg1:#0e141d;
 
       --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.09);
       --border:rgba(255,255,255,.14);
 
       --text:rgba(255,255,255,.92);
@@ -30,7 +29,6 @@
 
       --emerald:#2A6E57;
       --blue:#223a6b;
-      --silver:rgba(255,255,255,.86);
 
       --radius:22px;
       --radius2:16px;
@@ -52,7 +50,7 @@
         radial-gradient(900px 600px at 82% 30%, rgba(42,110,87,.40), transparent 62%),
         radial-gradient(1200px 800px at 50% 100%, rgba(255,255,255,.07), transparent 60%),
         linear-gradient(160deg, var(--bg0), var(--bg1));
-      overflow:hidden; /* один экран, без скролла */
+      overflow:hidden; /* один экран */
     }
 
     .wrap{
@@ -61,50 +59,61 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:22px;
+      padding:18px;
     }
 
     .slide{
       width:min(var(--max), 100%);
-      height:calc(100vh - 44px);
+      height:calc(100vh - 36px);
       border:1px solid var(--border);
       border-radius:var(--radius);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       box-shadow:var(--shadow);
       overflow:hidden;
-      position:relative;
     }
 
     .inner{
       height:100%;
-      padding:20px;
+      padding:16px;
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:14px;
-    }
-
-    /* ЛЕВАЯ КОЛОНКА */
-    .left{
-      min-width:0;
-      display:flex;
-      flex-direction:column;
+      grid-template-columns: 1.02fr .98fr;
       gap:12px;
     }
 
-    .hero{
+    .left, .right{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .box{
       border:1px solid var(--border);
       border-radius:var(--radius2);
       background:rgba(0,0,0,.18);
-      padding:14px;
+      padding:12px;
+      min-width:0;
+    }
+
+    .cap{
+      font-size:10.5px;
+      color:var(--dim);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin:0 0 8px 0;
+    }
+
+    /* HERO */
+    .hero{
       display:grid;
-      grid-template-columns: 96px 1fr;
+      grid-template-columns: 92px 1fr;
       gap:12px;
       align-items:center;
     }
 
     .avatar{
-      width:96px;
-      height:96px;
+      width:92px;
+      height:92px;
       border-radius:18px;
       border:1px solid var(--border);
       overflow:hidden;
@@ -122,21 +131,14 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(80px 80px at 20% 20%, rgba(255,255,255,.10), transparent 55%),
+        radial-gradient(78px 78px at 20% 20%, rgba(255,255,255,.10), transparent 55%),
         radial-gradient(90px 90px at 80% 80%, rgba(42,110,87,.12), transparent 60%);
       pointer-events:none;
     }
 
-    .titleRow{
-      min-width:0;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-
     .h1{
       margin:0;
-      font-size:clamp(22px, 2.4vw, 34px);
+      font-size:clamp(22px, 2.2vw, 32px);
       line-height:1.05;
       letter-spacing:-.02em;
       white-space:nowrap;
@@ -145,13 +147,14 @@
     }
 
     .sub{
-      margin:0;
+      margin:6px 0 0 0;
       color:var(--muted);
       font-size:clamp(12px, 1.05vw, 14px);
-      line-height:1.25;
+      line-height:1.2;
     }
 
     .tags{
+      margin-top:10px;
       display:flex;
       flex-wrap:wrap;
       gap:8px;
@@ -162,9 +165,8 @@
       border:1px solid var(--border);
       border-radius:999px;
       background:rgba(255,255,255,.04);
-      color:var(--silver);
+      color:rgba(255,255,255,.86);
       font-size:12px;
-      letter-spacing:.02em;
       white-space:nowrap;
     }
     .tag.em{
@@ -176,53 +178,42 @@
       background:rgba(34,58,107,.16);
     }
 
+    /* KPI */
     .kpiGrid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:10px;
+      gap:9px;
     }
 
     .kpiCard{
       border:1px solid var(--border);
-      border-radius:var(--radius2);
+      border-radius:14px;
       background:rgba(0,0,0,.18);
-      padding:12px;
+      padding:10px;
       min-width:0;
     }
 
     .kpi{
       margin:0;
-      font-size:clamp(16px, 1.9vw, 24px);
-      font-weight:800;
+      font-size:clamp(16px, 1.7vw, 22px);
+      font-weight:850;
       letter-spacing:-.01em;
       line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
     .kpiLbl{
       margin-top:6px;
-      font-size:12px;
+      font-size:11.5px;
       color:var(--muted);
-      line-height:1.25;
+      line-height:1.2;
+      max-height:2.4em;
+      overflow:hidden;
     }
 
-    .niches{
-      border:1px solid var(--border);
-      border-radius:var(--radius2);
-      background:rgba(0,0,0,.18);
-      padding:12px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      min-width:0;
-    }
-
-    .cap{
-      font-size:11px;
-      color:var(--dim);
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-
+    /* NICHES */
     .chipRow{
       display:flex;
       flex-wrap:wrap;
@@ -239,25 +230,9 @@
       white-space:nowrap;
     }
 
-    /* ПРАВАЯ КОЛОНКА */
-    .right{
-      min-width:0;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .block{
-      border:1px solid var(--border);
-      border-radius:var(--radius2);
-      background:rgba(0,0,0,.18);
-      padding:12px;
-      min-width:0;
-    }
-
+    /* EXPERIENCE */
     .expGrid{
       display:grid;
-      grid-template-columns: 1fr;
       gap:8px;
     }
 
@@ -273,51 +248,50 @@
       min-width:0;
     }
 
-    .logo{
+    .logoImg{
       width:44px;
       height:44px;
       border-radius:12px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(0,0,0,.25);
       overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--silver);
-      font-weight:800;
-      letter-spacing:.02em;
-      font-size:12px;
+    }
+    .logoImg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
     }
 
-    .expTxt{ min-width:0; }
     .expName{
       margin:0;
-      font-weight:800;
+      font-weight:850;
       letter-spacing:-.01em;
-      font-size:14px;
+      font-size:13.5px;
       line-height:1.15;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
+
     .expMeta{
-      margin-top:4px;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.25;
+      margin-top:6px;
       display:flex;
       flex-wrap:wrap;
       gap:8px;
     }
+
     .mini{
       padding:4px 8px;
       border:1px solid rgba(255,255,255,.12);
       border-radius:999px;
       background:rgba(0,0,0,.20);
-      color:var(--silver);
+      color:rgba(255,255,255,.86);
+      font-size:11.5px;
       white-space:nowrap;
     }
 
+    /* SKILLS */
     .skills{
       display:flex;
       flex-wrap:wrap;
@@ -332,80 +306,78 @@
       white-space:nowrap;
     }
 
-    .brandsRow{
+    /* BRANDS */
+    .brands{
       display:flex;
       gap:8px;
       align-items:center;
+      flex-wrap:nowrap;
       overflow:hidden;
     }
+
     .brand{
-      width:78px;
-      height:34px;
+      width:86px;
+      height:36px;
       border-radius:12px;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.03);
       display:flex;
       align-items:center;
       justify-content:center;
-      color:var(--dim);
-      font-size:11px;
-      white-space:nowrap;
       flex:0 0 auto;
-      padding:0 10px;
+      overflow:hidden;
     }
 
-    .footer{
-      margin-top:auto;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      color:var(--dim);
-      font-size:11px;
-      padding:0 2px;
-      align-items:center;
+    .brand img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      padding:6px 8px;
+      filter:saturate(1.05);
+      opacity:.92;
+      display:block;
     }
 
-    /* АДАПТИВ, но все равно один экран */
+    /* FIT */
     @media (max-width: 980px){
       .inner{ grid-template-columns: 1fr; }
-      .slide{ height:calc(100vh - 44px); }
       .kpiGrid{ grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 520px){
       .wrap{ padding:12px; }
-      .inner{ padding:14px; gap:10px; }
+      .inner{ padding:12px; gap:10px; }
       .hero{ grid-template-columns: 78px 1fr; }
       .avatar{ width:78px; height:78px; border-radius:16px; }
       .kpiGrid{ grid-template-columns: repeat(2, 1fr); }
-      .brand{ width:70px; }
+      .brand{ width:80px; }
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <section class="slide" aria-label="Цифры и факты обо мне. Один экран.">
+    <section class="slide" aria-label="Один экран. Цифры и факты.">
       <div class="inner">
 
         <!-- LEFT -->
         <div class="left">
 
-          <div class="hero">
-            <div class="avatar">
-              <!-- ЗАМЕНИ НА СВОЕ ФОТО -->
-              <img src="assets/me.jpg" alt="Владимир Николенко" />
-            </div>
+          <div class="box">
+            <div class="hero">
+              <div class="avatar">
+                <img src="assets/photo.jpg" alt="Владимир Николенко" />
+              </div>
 
-            <div class="titleRow">
-              <h1 class="h1">ВЛАДИМИР НИКОЛЕНКО</h1>
-              <p class="sub">Предприниматель-практик. Человек-система.</p>
+              <div>
+                <h1 class="h1">ВЛАДИМИР НИКОЛЕНКО</h1>
+                <p class="sub">Предприниматель-практик. Человек-система.</p>
 
-              <div class="tags">
-                <span class="tag em">цифры</span>
-                <span class="tag bl">система управления</span>
-                <span class="tag">план-факт</span>
-                <span class="tag">KPI</span>
-                <span class="tag">рост</span>
+                <div class="tags">
+                  <span class="tag em">цифры и факты</span>
+                  <span class="tag bl">управление</span>
+                  <span class="tag">план-факт</span>
+                  <span class="tag">KPI</span>
+                </div>
               </div>
             </div>
           </div>
@@ -425,20 +397,20 @@
             </div>
             <div class="kpiCard">
               <p class="kpi">2530+ ч</p>
-              <div class="kpiLbl">в бизнес-разборах (команда М. Дашкиева)</div>
+              <div class="kpiLbl">бизнес-разборы (команда М. Дашкиева)</div>
             </div>
             <div class="kpiCard">
               <p class="kpi">330 млн ₽+</p>
               <div class="kpiLbl">оборот проектов в год</div>
             </div>
             <div class="kpiCard">
-              <p class="kpi">Управлял</p>
-              <div class="kpiLbl">командами до 48 человек</div>
+              <p class="kpi">до 48</p>
+              <div class="kpiLbl">человек в управлении</div>
             </div>
           </div>
 
-          <div class="niches">
-            <div class="cap">Опыт в нишах</div>
+          <div class="box">
+            <p class="cap">Опыт в нишах</p>
             <div class="chipRow">
               <span class="chip">EDTECH</span>
               <span class="chip">HoReCa</span>
@@ -449,36 +421,35 @@
             </div>
           </div>
 
-          <div class="footer">
-            <div>Один экран. Без прокрутки.</div>
-            <div>Файл: one-slide.html</div>
-          </div>
-
         </div>
 
         <!-- RIGHT -->
         <div class="right">
 
-          <div class="block">
-            <div class="cap">Предпринимательский опыт</div>
+          <div class="box">
+            <p class="cap">Предпринимательский опыт</p>
 
             <div class="expGrid">
               <div class="exp">
-                <div class="logo">SMM</div>
-                <div class="expTxt">
+                <div class="logoImg">
+                  <img src="assets/smm.webp" alt="Nikolenko SMM" />
+                </div>
+                <div>
                   <p class="expName">Nikolenko SMM</p>
                   <div class="expMeta">
                     <span class="mini">5+ лет</span>
                     <span class="mini">LTV 3 года</span>
-                    <span class="mini">52,3% маржин.</span>
-                    <span class="mini">2 ч/нед на управл.</span>
+                    <span class="mini">52,3% рент.</span>
+                    <span class="mini">2 ч/нед</span>
                   </div>
                 </div>
               </div>
 
               <div class="exp">
-                <div class="logo">BR</div>
-                <div class="expTxt">
+                <div class="logoImg">
+                  <img src="assets/bruno.webp" alt="BRUNO" />
+                </div>
+                <div>
                   <p class="expName">BRUNO - сеть пиццерий</p>
                   <div class="expMeta">
                     <span class="mini">4,5 года</span>
@@ -490,22 +461,24 @@
               </div>
 
               <div class="exp">
-                <div class="logo">BD</div>
-                <div class="expTxt">
+                <div class="logoImg">
+                  <img src="assets/budemdud.webp" alt="БУДЕМ ДУДЬ" />
+                </div>
+                <div>
                   <p class="expName">БУДЕМ ДУДЬ - оформление праздников</p>
                   <div class="expMeta">
                     <span class="mini">3 года</span>
                     <span class="mini">ТОП 3 из 48</span>
                     <span class="mini">73% повторов</span>
-                    <span class="mini">43% маржин.</span>
+                    <span class="mini">43% рент.</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="block">
-            <div class="cap">Ключевые компетенции</div>
+          <div class="box">
+            <p class="cap">Ключевые компетенции</p>
             <div class="skills">
               <span class="skill">Системность</span>
               <span class="skill">Оцифровка</span>
@@ -516,24 +489,18 @@
             </div>
           </div>
 
-          <div class="block">
-            <div class="cap">Бренды, с которыми работал</div>
-            <div class="brandsRow" aria-label="Логотипы брендов">
-              <!-- Вариант А: текстовые плашки (быстро)
-                   Вариант Б: вместо текста вставь <img src="assets/brands/x.png"> внутри .brand -->
-              <div class="brand">BRAND 1</div>
-              <div class="brand">BRAND 2</div>
-              <div class="brand">BRAND 3</div>
-              <div class="brand">BRAND 4</div>
-              <div class="brand">BRAND 5</div>
-              <div class="brand">BRAND 6</div>
-            </div>
-          </div>
+          <div class="box">
+            <p class="cap">Крупные бренды, с которыми работал</p>
+            <div class="brands" aria-label="Логотипы брендов">
+              <div class="brand"><img src="assets/dodo.webp" alt="Dodo" /></div>
+              <div class="brand"><img src="assets/askonaipg.jpg" alt="Askona" /></div>
+              <div class="brand"><img src="assets/myata.webp" alt="Myata" /></div>
+              <div class="brand"><img src="assets/mybox.webp" alt="MyBox" /></div>
 
-          <div class="footer">
-            <!-- Если хочешь привязку к сайту, оставь ссылку на index.html в том же репо -->
-            <div><a href="index.html" style="color:rgba(255,255,255,.78); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.22);">перейти на сайт</a></div>
-            <div style="text-align:right;">Обнови ассеты: assets/me.jpg</div>
+              <!-- Если хочешь добавить еще, просто дублируй:
+              <div class="brand"><img src="assets/ИМЯ_ФАЙЛА" alt="Brand" /></div>
+              -->
+            </div>
           </div>
 
         </div>
