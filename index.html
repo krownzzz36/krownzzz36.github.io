@@ -983,6 +983,156 @@
     height: 200px;
   }
 }
+    /* ========== MEDIA: LOGO / BRANDS / REVIEWS ========== */
+
+.brandmark{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brandmark img{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  object-fit:contain;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 10px 30px rgba(0,0,0,.20);
+}
+
+.brandmark span{
+  font-family: var(--font-title, "Montserrat", system-ui);
+  letter-spacing:-0.02em;
+}
+
+/* чтобы блоки не "ехали" - одинаковая сетка как везде */
+.section{
+  padding:56px 0;
+}
+
+.container{
+  width:min(var(--max, 1100px), calc(100% - 40px));
+  margin:0 auto;
+}
+
+/* REVIEWS: горизонтальная галерея со снапом */
+.reviews-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:14px;
+}
+
+.reviews-sub{
+  color: rgba(255,255,255,.70);
+  margin-top:8px;
+}
+
+.reviews-strip{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding:10px 2px 16px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  border-radius:18px;
+}
+
+.reviews-strip::-webkit-scrollbar{ height:10px; }
+.reviews-strip::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,.10);
+  border-radius:20px;
+}
+.reviews-strip::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.review-shot{
+  flex:0 0 auto;
+  width: clamp(220px, 28vw, 340px);
+  height: clamp(280px, 38vw, 420px);
+  border-radius:20px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 18px 50px rgba(0,0,0,.18);
+  overflow:hidden;
+  scroll-snap-align:start;
+  transform:translateZ(0);
+  transition:transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.review-shot:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.055);
+}
+
+.review-shot img{
+  width:100%;
+  height:100%;
+  object-fit:contain; /* важно: не режем скрин */
+  display:block;
+  background:rgba(0,0,0,.18);
+}
+
+/* BRANDS: сетка логотипов */
+.logo-grid{
+  display:grid;
+  grid-template-columns:repeat(5, minmax(0, 1fr));
+  gap:12px;
+}
+
+@media (max-width: 900px){
+  .logo-grid{ grid-template-columns:repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 520px){
+  .logo-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+}
+
+.logo-item{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:74px;
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.10);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.logo-item:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.05);
+}
+
+.logo-item img{
+  max-width:78%;
+  max-height:64%;
+  object-fit:contain;
+  filter: saturate(.95);
+  opacity:.95;
+}
+
+/* Предпринимательский опыт: картинка вместо кружка */
+.xp-media{
+  width:100%;
+  height:140px;
+  border-radius:18px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  overflow:hidden;
+  margin-bottom:14px;
+}
+
+.xp-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
   </style>
 </head>
 
@@ -1398,56 +1548,32 @@
     <!-- TESTIMONIALS -->
 <!-- TESTIMONIALS -->
 <section id="reviews" class="section">
-  <div class="wrap">
-    <div class="secHead reveal">
+  <div class="container">
+
+    <div class="reviews-head">
       <div>
-        <h2>Отзывы</h2>
-        <p>Скриншоты. Листайте вправо.</p>
+        <h2 class="h2">Отзывы</h2>
+        <div class="reviews-sub">Скриншоты. Листайте вправо.</div>
       </div>
 
-      <a class="btn primary"
-         href="https://t.me/+oySxZ-zEDowxY2Zi"
-         target="_blank"
-         rel="noopener">
+      <a class="btn" href="https://t.me/+oySxZ-zEDowxY2Zi" target="_blank" rel="noopener">
         Больше отзывов
       </a>
     </div>
 
-    <div class="tWrap reveal">
-      <div class="tTrack" aria-label="Галерея отзывов">
-        <!-- 10 карточек со скриншотами. Просто замените src на свои файлы -->
-        <figure class="tCardImg">
-          <img src="assets/reviews/01.jpg" alt="Отзыв 1" loading="lazy">
-        </figure>
-        <figure class="tCardImg">
-          <img src="assets/reviews/02.jpg" alt="Отзыв 2" loading="lazy">
-        </figure>
-        <figure class="tCardImg">
-          <img src="assets/reviews/03.jpg" alt="Отзыв 3" loading="lazy">
-        </figure>
-        <figure class="tCardImg">
-          <img src="assets/reviews/04.jpg" alt="Отзыв 4" loading="lazy">
-        </figure>
-        <figure class="tCardImg">
-          <img src="assets/reviews/05.jpg" alt="Отзыв 5" loading="lazy">
-        </figure>
-        <figure class="tCardImg">
-          <img src="assets/reviews/06.jpg" alt="Отзыв 6" loading="lazy">
-        </figure>
-        <figure class="tCardImg">
-          <img src="assets/reviews/07.jpg" alt="Отзыв 7" loading="lazy">
-        </figure>
-        <figure class="tCardImg">
-          <img src="assets/reviews/08.jpg" alt="Отзыв 8" loading="lazy">
-        </figure>
-        <figure class="tCardImg">
-          <img src="assets/reviews/09.jpg" alt="Отзыв 9" loading="lazy">
-        </figure>
-        <figure class="tCardImg">
-          <img src="assets/reviews/10.jpg" alt="Отзыв 10" loading="lazy">
-        </figure>
-      </div>
+    <div class="reviews-strip" aria-label="Галерея отзывов">
+      <div class="review-shot"><img src="./review-01.jpg" alt="Отзыв 1"></div>
+      <div class="review-shot"><img src="./review-02.jpg" alt="Отзыв 2"></div>
+      <div class="review-shot"><img src="./review-03.jpg" alt="Отзыв 3"></div>
+      <div class="review-shot"><img src="./review-04.jpg" alt="Отзыв 4"></div>
+      <div class="review-shot"><img src="./review-05.jpg" alt="Отзыв 5"></div>
+      <div class="review-shot"><img src="./review-06.jpg" alt="Отзыв 6"></div>
+      <div class="review-shot"><img src="./review-07.jpg" alt="Отзыв 7"></div>
+      <div class="review-shot"><img src="./review-08.jpg" alt="Отзыв 8"></div>
+      <div class="review-shot"><img src="./review-09.jpg" alt="Отзыв 9"></div>
+      <div class="review-shot"><img src="./review-10.jpg" alt="Отзыв 10"></div>
     </div>
+
   </div>
 </section>
     
