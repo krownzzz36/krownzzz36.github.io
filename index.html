@@ -4,30 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Владимир Николенко - операционный директор на аутсорсе и бизнес-инженер</title>
-  <meta name="description" content="Владимир Николенко - операционный директор на аутсорсе и бизнес-инженер. Строю систему управления и роста так, чтобы бизнес стал управляемым, предсказуемым и прибыльным." />
+  <title>Владимир Николенко - бизнес-трекер</title>
+  <meta name="description" content="Владимир Николенко - бизнес-трекер. Настраиваю систему управления и исполнения: цифры, план-факт, ответственность, ритм." />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Владимир Николенко - операционный директор на аутсорсе и бизнес-инженер" />
-  <meta property="og:description" content="Хаос - порядок - прибыль. Управление через цифры, роли, ритм, план-факт." />
+  <meta property="og:title" content="Владимир Николенко - бизнес-трекер" />
+  <meta property="og:description" content="Система управления и исполнения: цифры, план-факт, ответственность, ритм." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/og.jpg" />
   <meta property="og:locale" content="ru_RU" />
 
-  <!-- Favicon (опционально) -->
   <link rel="icon" href="assets/favicon.png" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Dark Premium */
       --bg:#0F1216;
       --surface:#161B22;
       --card:#1C232B;
+
       --text:#E7EDF5;
       --muted:#A9B4C0;
       --line:#2A3440;
@@ -37,6 +34,9 @@
 
       --green:#0B5D4B;
       --green2:#083F34;
+
+      --red:#7A1F2B;
+      --red2:#4B111A;
 
       --silver:#BFC7D5;
 
@@ -51,22 +51,30 @@
 
       --h-font: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       --b-font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      /* scroll-driven vars */
+      --scroll: 0;
+      --bgShiftX: 0px;
+      --bgShiftY: 0px;
+      --gridShift: 0px;
     }
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
+
     body{
       margin:0;
       font-family:var(--b-font);
       color:var(--text);
-      background: radial-gradient(1200px 700px at 20% 10%, rgba(11,61,145,.24), transparent 60%),
-                  radial-gradient(900px 600px at 85% 25%, rgba(11,93,75,.20), transparent 55%),
-                  radial-gradient(900px 900px at 50% 110%, rgba(191,199,213,.10), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 700px at calc(20% + var(--bgShiftX)) calc(10% + var(--bgShiftY)), rgba(11,61,145,.22), transparent 60%),
+        radial-gradient(900px 600px at calc(85% - var(--bgShiftX)) calc(25% + var(--bgShiftY)), rgba(11,93,75,.18), transparent 55%),
+        radial-gradient(900px 900px at 50% calc(110% - var(--bgShiftY)), rgba(191,199,213,.10), transparent 55%),
+        var(--bg);
       overflow-x:hidden;
     }
 
-    /* subtle grid */
+    /* grid layer that subtly moves with scroll */
     body:before{
       content:"";
       position:fixed;
@@ -77,10 +85,10 @@
         linear-gradient(to right, rgba(42,52,64,.35) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(42,52,64,.35) 1px, transparent 1px);
       background-size: 64px 64px;
+      background-position: var(--gridShift) var(--gridShift);
       mask-image: radial-gradient(700px 500px at 30% 15%, rgba(0,0,0,1), rgba(0,0,0,0) 70%);
     }
 
-    /* noise */
     body:after{
       content:"";
       position:fixed;
@@ -95,7 +103,6 @@
     a{ color:inherit; text-decoration:none; }
     .container{ width:min(var(--max), calc(100% - var(--pad)*2)); margin:0 auto; }
 
-    /* top bar */
     .top{
       position:sticky;
       top:0;
@@ -184,6 +191,7 @@
       cursor:pointer;
       transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
       user-select:none;
+      white-space: nowrap;
     }
     .btn:hover{
       transform: translateY(-1px);
@@ -200,9 +208,7 @@
       border-color: rgba(191,199,213,.28);
       box-shadow: 0 24px 80px rgba(11,61,145,.22);
     }
-    .btn--ghost{
-      background: transparent;
-    }
+
     .pill{
       display:inline-flex;
       align-items:center;
@@ -222,17 +228,16 @@
       box-shadow: 0 0 0 4px rgba(11,93,75,.16);
     }
 
-    /* layout */
-    section{ padding: clamp(48px, 7vw, 88px) 0; }
-    .hero{
-      padding-top: clamp(26px, 4vw, 44px);
-    }
+    section{ padding: clamp(34px, 5.2vw, 64px) 0; }
+
+    .hero{ padding-top: clamp(20px, 3.2vw, 36px); }
     .hero__grid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap: clamp(18px, 4vw, 44px);
       align-items:center;
     }
+
     .kicker{
       display:flex;
       align-items:center;
@@ -240,36 +245,31 @@
       margin-bottom: 14px;
       flex-wrap: wrap;
     }
+
     h1{
       font-family: var(--h-font);
       font-weight: 700;
       margin:0;
       letter-spacing: -0.6px;
-      font-size: clamp(32px, 4.2vw, 54px);
-      line-height: 1.03;
+      font-size: clamp(28px, 3.6vw, 46px);
+      line-height: 1.05;
     }
+
     .lead{
-      margin: 16px 0 0;
+      margin: 14px 0 0;
       color: rgba(231,237,245,.82);
       font-size: clamp(15px, 1.5vw, 18px);
       line-height: 1.55;
-      max-width: 56ch;
+      max-width: 58ch;
     }
     .lead strong{ color: var(--text); font-weight: 600; }
+
     .hero__cta{
-      margin-top: 22px;
+      margin-top: 18px;
       display:flex;
       gap:12px;
       flex-wrap: wrap;
       align-items:center;
-    }
-
-    .note{
-      margin-top: 16px;
-      color: rgba(169,180,192,.88);
-      font-size: 12.5px;
-      line-height: 1.45;
-      max-width: 62ch;
     }
 
     .photo{
@@ -329,22 +329,32 @@
       white-space: nowrap;
     }
 
-    /* cards */
-    .grid4{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+    .title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom: 14px;
     }
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+    h2{
+      margin:0;
+      font-family: var(--h-font);
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      font-size: clamp(22px, 2.4vw, 32px);
+      line-height:1.08;
     }
-    .grid2{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+    .subtitle{
+      color: rgba(169,180,192,.95);
+      font-size: 13.5px;
+      line-height:1.45;
+      max-width: 70ch;
+      margin-top: 8px;
     }
+
+    .grid4{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .grid2{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 
     .card{
       border-radius: var(--radius2);
@@ -365,11 +375,12 @@
       content:"";
       position:absolute;
       inset:-40%;
-      background: radial-gradient(closest-side, rgba(11,61,145,.18), transparent 62%);
+      background: radial-gradient(closest-side, rgba(11,61,145,.16), transparent 62%);
       transform: translate(65%, -35%);
       pointer-events:none;
       opacity:.75;
     }
+
     .metric{
       font-family: var(--h-font);
       font-weight: 700;
@@ -388,34 +399,41 @@
       line-height:1.45;
     }
 
-    .title{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom: 16px;
+    /* chips block */
+    .chipsWrap{
+      margin-top: 14px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(42,52,64,.78);
+      background: rgba(22,27,34,.54);
+      padding: 16px;
+      position:relative;
+      overflow:hidden;
     }
-    h2{
-      margin:0;
+    .chipsWrap:before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: radial-gradient(closest-side, rgba(11,93,75,.14), transparent 64%);
+      transform: translate(55%, -25%);
+      pointer-events:none;
+      opacity:.8;
+    }
+    .chipsTitle{
       font-family: var(--h-font);
       font-weight: 700;
-      letter-spacing: -0.3px;
-      font-size: clamp(22px, 2.5vw, 32px);
-      line-height:1.08;
+      letter-spacing: -0.2px;
+      font-size: 14px;
+      color: rgba(231,237,245,.92);
+      margin-bottom: 10px;
+      position:relative;
+      z-index:1;
     }
-    .subtitle{
-      color: rgba(169,180,192,.95);
-      font-size: 13.5px;
-      line-height:1.45;
-      max-width: 70ch;
-      margin-top: 8px;
-    }
-
     .chips{
       display:flex;
       flex-wrap: wrap;
       gap:10px;
-      margin-top: 14px;
+      position:relative;
+      z-index:1;
     }
     .chip{
       padding: 10px 12px;
@@ -425,8 +443,18 @@
       color: rgba(231,237,245,.88);
       font-size: 13px;
       line-height:1.25;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+      cursor: default;
+      user-select:none;
+    }
+    .chip:hover{
+      transform: translateY(-1px) scale(1.02);
+      border-color: rgba(191,199,213,.26);
+      background: rgba(28,35,43,.72);
+      box-shadow: 0 16px 44px rgba(0,0,0,.28);
     }
 
+    /* list + bullets */
     .list{
       margin: 12px 0 0;
       padding:0;
@@ -441,77 +469,316 @@
       color: rgba(231,237,245,.86);
       line-height: 1.45;
       font-size: 14px;
+      padding: 4px 2px;
+      border-radius: 12px;
+      transition: background .18s ease;
     }
-    .check{
-      margin-top: 3px;
-      width: 18px;
-      height: 18px;
-      flex: 0 0 18px;
-      border-radius: 7px;
+    .list li:hover{ background: rgba(15,18,22,.28); }
+
+    .bullet{
+      margin-top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      flex: 0 0 10px;
       border:1px solid rgba(191,199,213,.22);
-      background:
-        radial-gradient(8px 8px at 30% 35%, rgba(191,199,213,.65), transparent 60%),
-        linear-gradient(135deg, rgba(11,93,75,.55), rgba(11,61,145,.55));
+      background: rgba(231,237,245,.12);
+      box-shadow: 0 0 0 0 rgba(191,199,213,0);
+      transition: box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .list li:hover .bullet{
+      background: rgba(191,199,213,.22);
+      border-color: rgba(191,199,213,.32);
+      box-shadow: 0 0 0 6px rgba(11,61,145,.14);
     }
 
-    /* products */
-    .price{
-      margin-top: 12px;
-      display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:10px;
-      flex-wrap: wrap;
-    }
-    .price b{
-      font-family: var(--h-font);
-      font-size: 18px;
-      letter-spacing: -0.2px;
-    }
-    .price span{
-      color: rgba(169,180,192,.9);
-      font-size: 13px;
-    }
-
-    /* CTA section */
-    .cta{
-      border-radius: var(--radius);
-      border:1px solid rgba(42,52,64,.82);
-      background:
-        radial-gradient(900px 420px at 20% 0%, rgba(11,61,145,.25), transparent 60%),
-        radial-gradient(900px 420px at 90% 20%, rgba(11,93,75,.22), transparent 55%),
-        rgba(22,27,34,.72);
-      box-shadow: var(--shadow);
-      padding: clamp(18px, 3vw, 28px);
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 16px;
-      align-items: stretch;
-      overflow:hidden;
+    /* checkboxes for "опыт" blocks */
+    .tickbox{
+      margin-top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 6px;
+      flex: 0 0 16px;
+      border:1px solid rgba(191,199,213,.26);
+      background: rgba(22,27,34,.60);
       position:relative;
+      transition: border-color .18s ease, box-shadow .18s ease;
     }
-    .cta:before{
+    .tickbox:after{
+      content:"";
+      position:absolute;
+      left: 4px;
+      top: 2px;
+      width: 6px;
+      height: 9px;
+      border-right: 2px solid rgba(231,237,245,.85);
+      border-bottom: 2px solid rgba(231,237,245,.85);
+      transform: rotate(40deg);
+      opacity:.9;
+    }
+    .list li:hover .tickbox{
+      border-color: rgba(191,199,213,.34);
+      box-shadow: 0 0 0 6px rgba(11,93,75,.12);
+    }
+
+    /* green/red accents for two cards */
+    .card--green:before{
+      background: radial-gradient(closest-side, rgba(11,93,75,.22), transparent 62%);
+    }
+    .card--green{
+      border-color: rgba(11,93,75,.28);
+    }
+    .card--green:hover{
+      border-color: rgba(11,93,75,.36);
+    }
+
+    .card--red:before{
+      background: radial-gradient(closest-side, rgba(122,31,43,.22), transparent 62%);
+    }
+    .card--red{
+      border-color: rgba(122,31,43,.30);
+    }
+    .card--red:hover{
+      border-color: rgba(122,31,43,.40);
+    }
+
+    /* reveal */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.is-visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Roadmap */
+    .roadmap{
+      border-radius: var(--radius);
+      border:1px solid rgba(42,52,64,.78);
+      background: rgba(22,27,34,.58);
+      padding: clamp(16px, 2.6vw, 22px);
+      position:relative;
+      overflow:hidden;
+    }
+    .roadmap:before{
       content:"";
       position:absolute;
       inset:-40%;
-      background: radial-gradient(closest-side, rgba(191,199,213,.14), transparent 65%);
+      background: radial-gradient(closest-side, rgba(11,61,145,.18), transparent 66%);
+      transform: translate(20%, -10%);
+      pointer-events:none;
+      opacity:.9;
+    }
+
+    .track{
+      position:relative;
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      z-index:1;
+    }
+    .track:after{
+      content:"";
+      position:absolute;
+      left: 6%;
+      right: 6%;
+      top: 44px;
+      height: 44px;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='120' viewBox='0 0 1200 120'%3E%3Cpath d='M0,70 C120,10 240,110 360,50 C480,-10 600,120 720,60 C840,0 960,110 1080,50 C1140,20 1170,35 1200,55' fill='none' stroke='rgba(191,199,213,0.22)' stroke-width='2'/%3E%3C/svg%3E") center/cover no-repeat;
+      pointer-events:none;
+      opacity:.95;
+      filter: blur(.1px);
+    }
+
+    .step{
+      position:relative;
+      padding-top: 10px;
+    }
+    .stepCard{
+      border-radius: 18px;
+      border:1px solid rgba(42,52,64,.78);
+      background: rgba(15,18,22,.42);
+      padding: 14px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+      min-height: 150px;
+    }
+    .stepCard:hover{
+      transform: translateY(-2px);
+      border-color: rgba(191,199,213,.22);
+      background: rgba(22,27,34,.62);
+      box-shadow: 0 18px 60px rgba(0,0,0,.30);
+    }
+
+    .stepTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 10px;
+    }
+    .stepNum{
+      font-family: var(--h-font);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing:.2px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(42,52,64,.85);
+      background: rgba(28,35,43,.45);
+      color: rgba(231,237,245,.92);
+      white-space: nowrap;
+    }
+    .node{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      border:1px solid rgba(191,199,213,.28);
+      background: rgba(191,199,213,.10);
+      box-shadow: 0 0 0 0 rgba(11,61,145,0);
+      transition: box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .stepCard:hover .node{
+      background: rgba(191,199,213,.22);
+      border-color: rgba(191,199,213,.34);
+      box-shadow: 0 0 0 8px rgba(11,61,145,.14);
+    }
+
+    .stepTitle{
+      font-family: var(--h-font);
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      font-size: 16px;
+      margin: 0;
+    }
+    .stepText{
+      margin: 8px 0 0;
+      color: rgba(169,180,192,.92);
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+
+    /* Formats section visual separation */
+    .formats{
+      border-radius: var(--radius);
+      border:1px solid rgba(42,52,64,.78);
+      background:
+        radial-gradient(900px 420px at 20% 0%, rgba(11,61,145,.20), transparent 60%),
+        radial-gradient(900px 420px at 90% 20%, rgba(11,93,75,.18), transparent 55%),
+        rgba(22,27,34,.62);
+      box-shadow: var(--shadow2);
+      padding: clamp(16px, 2.6vw, 22px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .formatCardActions{
+      margin-top: 14px;
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+    }
+
+    /* logo placeholders */
+    .logoSlot{
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      border:1px solid rgba(42,52,64,.78);
+      background: rgba(22,27,34,.55);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: rgba(169,180,192,.85);
+      font-size: 12px;
+      flex: 0 0 56px;
+      overflow:hidden;
+    }
+    .logoSlot img{ width:100%; height:100%; object-fit: cover; display:block; }
+
+    .workHeader{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom: 10px;
+    }
+    .workHeaderText{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .workName{
+      font-family: var(--h-font);
+      font-weight: 700;
+      letter-spacing:-0.2px;
+      font-size: 16px;
+      margin:0;
+    }
+
+    /* brand logos grid */
+    .logos{
+      display:grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+    .logoBox{
+      border-radius: 18px;
+      border:1px solid rgba(42,52,64,.78);
+      background: rgba(22,27,34,.55);
+      min-height: 74px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .logoBox:hover{
+      transform: translateY(-2px);
+      border-color: rgba(191,199,213,.22);
+      background: rgba(28,35,43,.70);
+    }
+    .logoBox img{ max-width: 100%; max-height: 42px; opacity:.95; }
+    .logoBox span{ color: rgba(169,180,192,.9); font-size: 12px; }
+
+    /* Contacts */
+    .contacts{
+      border-radius: var(--radius);
+      border:1px solid rgba(42,52,64,.82);
+      background:
+        radial-gradient(900px 420px at 20% 0%, rgba(11,61,145,.22), transparent 60%),
+        radial-gradient(900px 420px at 90% 20%, rgba(11,93,75,.18), transparent 55%),
+        rgba(22,27,34,.68);
+      box-shadow: var(--shadow);
+      padding: clamp(16px, 2.6vw, 22px);
+      overflow:hidden;
+      position:relative;
+    }
+    .contacts:before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: radial-gradient(closest-side, rgba(191,199,213,.12), transparent 66%);
       transform: translate(25%, -15%);
       pointer-events:none;
       opacity:.9;
     }
-    .cta h3{
-      margin:0;
-      font-family: var(--h-font);
-      font-size: clamp(20px, 2.4vw, 28px);
-      letter-spacing:-0.2px;
-      line-height:1.1;
+
+    .contactsGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      align-items: stretch;
+      position:relative;
+      z-index:1;
     }
-    .cta p{
-      margin:10px 0 0;
-      color: rgba(231,237,245,.82);
-      line-height:1.5;
-      font-size: 14.5px;
-      max-width: 62ch;
+
+    .contactLinks{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
     }
 
     .form{
@@ -524,14 +791,8 @@
       gap:10px;
       position:relative;
     }
-    .field{
-      display:grid;
-      gap:6px;
-    }
-    .label{
-      font-size: 12px;
-      color: rgba(169,180,192,.9);
-    }
+    .field{ display:grid; gap:6px; }
+    .label{ font-size: 12px; color: rgba(169,180,192,.9); }
     input, textarea{
       width:100%;
       padding: 12px 12px;
@@ -542,7 +803,7 @@
       outline:none;
       font-family: var(--b-font);
       font-size: 14px;
-      transition: border-color .18s ease, transform .18s ease, background .18s ease;
+      transition: border-color .18s ease, background .18s ease;
     }
     input:focus, textarea:focus{
       border-color: rgba(191,199,213,.25);
@@ -556,20 +817,8 @@
       line-height:1.4;
     }
 
-    /* reveal animation */
-    .reveal{
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .reveal.is-visible{
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* footer */
     footer{
-      padding: 28px 0 42px;
+      padding: 26px 0 40px;
       border-top: 1px solid rgba(42,52,64,.55);
       background: rgba(15,18,22,.35);
     }
@@ -584,26 +833,34 @@
       color: rgba(169,180,192,.9);
       line-height:1.5;
     }
-    .links{
-      display:flex;
-      gap:10px;
-      flex-wrap: wrap;
-    }
 
-    /* responsive */
     @media (max-width: 980px){
       .hero__grid{ grid-template-columns: 1fr; }
       .grid4{ grid-template-columns: repeat(2, 1fr); }
       .grid3{ grid-template-columns: 1fr; }
       .grid2{ grid-template-columns: 1fr; }
-      .cta{ grid-template-columns: 1fr; }
-      .brand{ min-width: auto; }
       .nav{ display:none; }
+      .track{ grid-template-columns: 1fr; }
+      .track:after{
+        left: 18px; right:auto;
+        top: 8px;
+        width: 44px;
+        height: calc(100% - 16px);
+        background:
+          linear-gradient(to bottom, rgba(191,199,213,.22), rgba(191,199,213,.06));
+        border-radius: 999px;
+        opacity:.7;
+      }
+      .step{ padding-top: 0; }
+      .contactsGrid{ grid-template-columns: 1fr; }
+      .logos{ grid-template-columns: repeat(3, 1fr); }
     }
+
     @media (prefers-reduced-motion: reduce){
       html{ scroll-behavior:auto; }
-      .btn, .card, .reveal{ transition:none !important; }
-      .btn:hover, .card:hover{ transform:none; }
+      .btn, .card, .reveal, .chip, .stepCard, .logoBox{ transition:none !important; }
+      .btn:hover, .card:hover, .chip:hover, .stepCard:hover, .logoBox:hover{ transform:none; }
+      body:before{ background-position: 0 0; }
     }
   </style>
 </head>
@@ -616,78 +873,66 @@
           <div class="brand__mark" aria-hidden="true"></div>
           <div class="brand__txt">
             <div class="brand__name">Владимир Николенко</div>
-            <div class="brand__role">Операционный директор на аутсорсе - бизнес-инженер</div>
+            <div class="brand__role">Бизнес-трекер</div>
           </div>
         </a>
 
         <nav class="nav" aria-label="Навигация">
           <a href="#about">Обо мне</a>
           <a href="#method">Метод</a>
-          <a href="#products">Форматы</a>
-          <a href="#cases">Опыт</a>
-          <a href="#cta">Контакты</a>
+          <a href="#formats">Форматы</a>
+          <a href="#experience">Опыт</a>
+          <a href="#contacts">Контакты</a>
         </nav>
 
         <div class="actions">
-          <!-- Вставь свои ссылки -->
-          <a class="btn btn--ghost" href="https://t.me/USERNAME" target="_blank" rel="noreferrer">Telegram</a>
-          <a class="btn btn--primary" href="#cta">Записаться на разбор</a>
+          <a class="btn btn--primary" href="#contacts">Записаться на бизнес-разбор</a>
         </div>
       </div>
     </div>
   </header>
 
   <main id="top">
-    <!-- HERO -->
     <section class="hero">
       <div class="container">
         <div class="hero__grid">
           <div>
             <div class="kicker">
-              <span class="pill"><span class="dot"></span>Система управления под вашу цель</span>
-              <span class="pill">Хаос - порядок - прибыль</span>
+              <span class="pill"><span class="dot"></span>Система управления и исполнения</span>
+              <span class="pill">Цифры - план-факт - ответственность - ритм</span>
             </div>
 
-            <h1>Строю систему управления и роста так, чтобы бизнес стал управляемым, предсказуемым и прибыльным</h1>
+            <h1>Настраиваю систему управления и исполнения, чтобы бизнес стал управляемым и предсказуемым</h1>
 
             <p class="lead">
-              Я захожу туда, где нужна <strong>приборная панель</strong> вместо "ощущений": цифры, план-факт, роли, ответственность, регулярный ритм.
-              Результат фиксируется через систему, а не через героизм собственника.
+              Захожу туда, где нужно перестать жить "на ощущениях" и начать управлять через контрольные точки.
+              Ставим метрики, план-факт, роли, ответственность и ритм, который держит результат.
             </p>
 
             <div class="hero__cta">
-              <a class="btn btn--primary" href="#cta">Бизнес-разбор - 10 000 ₽</a>
-              <a class="btn" href="#products">Посмотреть форматы</a>
-              <a class="btn btn--ghost" href="#principles">Принципы</a>
-            </div>
-
-            <div class="note">
-              Ключевая мысль: инструменты поодиночке не работают. Работает только система - цифры, роли, ритм, исполнение.
+              <a class="btn btn--primary" href="#contacts">Записаться на бизнес-разбор</a>
             </div>
           </div>
 
           <div class="photo reveal" aria-label="Фото">
-            <!-- Положи фото сюда: assets/photo.jpg или assets/photo.webp -->
             <img src="assets/photo.jpg" alt="Владимир Николенко" loading="eager" />
             <div class="photo__badge">
               <div>
                 <b>Владимир Николенко</b>
-                <span>Операционный директор на аутсорсе - бизнес-инженер</span>
+                <span>Бизнес-трекер</span>
               </div>
-              <div class="mini">Работаю РФ и СНГ<br>Онлайн формат</div>
+              <div class="mini">Онлайн<br>РФ и СНГ</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- NUMBERS -->
     <section id="about">
       <div class="container">
         <div class="title">
           <div>
             <h2>Цифры и факты</h2>
-            <div class="subtitle">Спокойные пруфы уровня. Один факт - один смысл.</div>
           </div>
         </div>
 
@@ -702,11 +947,11 @@
           </div>
           <div class="card reveal">
             <div class="metric">4 <small>года</small></div>
-            <div class="cap">бизнес-трекер</div>
+            <div class="cap">бизнес-трекинг</div>
           </div>
           <div class="card reveal">
             <div class="metric">2530+ <small>часов</small></div>
-            <div class="cap">в бизнес-разборах в команде М. Дашкиева</div>
+            <div class="cap">бизнес-разборов в команде М. Дашкиева</div>
           </div>
         </div>
 
@@ -723,331 +968,361 @@
           </div>
         </div>
 
-        <div class="chips">
-          <div class="chip">EdTech</div>
-          <div class="chip">HoReCa</div>
-          <div class="chip">Event</div>
-          <div class="chip">Digital-агентства</div>
-          <div class="chip">Консалтинг</div>
-          <div class="chip">Fashion</div>
-          <div class="chip">Аутсорсинг и сервисные модели</div>
+        <div class="chipsWrap reveal" style="margin-top:14px">
+          <div class="chipsTitle">Ниши, где у меня есть опыт</div>
+          <div class="chips">
+            <div class="chip">EdTech</div>
+            <div class="chip">HoReCa</div>
+            <div class="chip">Event</div>
+            <div class="chip">Digital-агентства</div>
+            <div class="chip">Консалтинг</div>
+            <div class="chip">Fashion</div>
+            <div class="chip">Аутсорсинг и сервисные модели</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- WHEN NEEDED / NOT FIT -->
     <section>
       <div class="container">
         <div class="grid2">
-          <div class="card reveal">
+          <div class="card card--green reveal">
             <h2 style="margin-bottom:10px">Когда я нужен</h2>
             <ul class="list">
-              <li><span class="check" aria-hidden="true"></span><span>В управлении хаос и все держится на собственнике</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Компания растет, но вместе с ростом масштабируется хаос</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Планы не исполняются стабильно, управление "на ощущениях"</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Метрики плавают, решения принимаются вслепую</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Нужны роли, KPI, регулярный ритм, финмодель, прозрачность</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>В управлении хаос и все держится на собственнике</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Рост идет, но вместе с ним масштабируется хаос</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Планы не исполняются стабильно, не хватает дисциплины исполнения</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Решения принимаются без цифр и контрольных точек</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Нужно выстроить роли, ответственность, ритм и отчетность</span></li>
             </ul>
           </div>
 
-          <div class="card reveal">
+          <div class="card card--red reveal">
             <h2 style="margin-bottom:10px">Фильтры</h2>
             <ul class="list">
-              <li><span class="check" aria-hidden="true"></span><span>Выручка от 2,5 млн ₽ в месяц, команда от 5 человек</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Готовность управлять через цифры и держать дисциплину внедрения</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Продукт нормального уровня, есть спрос и оффер</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Я не вхожу в серые и токсичные истории и этически сомнительные ниши</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Запрос "сделайте за меня" не подходит: система строится через исполнение</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Выручка от 2,5 млн ₽ в месяц, команда от 5 человек</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Готовность управлять через цифры и ритм внедрения</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Есть продукт и спрос, задача в управлении и масштабировании</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Этика и репутация важнее "быстрых схем"</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Запрос "сделайте за меня" не подойдет, нужен режим исполнения</span></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- METHOD -->
     <section id="method">
       <div class="container">
         <div class="title">
           <div>
             <h2>Метод</h2>
-            <div class="subtitle">Трекинг по цели: фокус, дисциплина, система. Сначала реальность, потом решение, потом задача и контроль.</div>
+            <div class="subtitle">Дорожная карта работы: от диагностики к стабильному исполнению.</div>
           </div>
         </div>
 
-        <div class="grid3">
-          <div class="card reveal">
-            <div class="pill" style="width:max-content;margin-bottom:10px">Шаг 1</div>
-            <div class="metric" style="font-size:18px">Бизнес-разбор</div>
-            <div class="cap">Диагностика ситуации, цели, ограничений, точек влияния. Без цифр решения не обсуждаем.</div>
+        <div class="roadmap reveal">
+          <div class="track">
+            <div class="step">
+              <div class="stepCard">
+                <div class="stepTop">
+                  <div class="stepNum">Шаг 1</div>
+                  <div class="node" aria-hidden="true"></div>
+                </div>
+                <h3 class="stepTitle">Диагностика</h3>
+                <div class="stepText">Фиксируем реальность: цифры, ограничения, узкие места, точки влияния.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="stepCard">
+                <div class="stepTop">
+                  <div class="stepNum">Шаг 2</div>
+                  <div class="node" aria-hidden="true"></div>
+                </div>
+                <h3 class="stepTitle">Цель и критерии</h3>
+                <div class="stepText">Определяем результат и измеримость: что должно измениться и как это увидеть.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="stepCard">
+                <div class="stepTop">
+                  <div class="stepNum">Шаг 3</div>
+                  <div class="node" aria-hidden="true"></div>
+                </div>
+                <h3 class="stepTitle">План действий</h3>
+                <div class="stepText">Собираем спринт: задачи, ответственные, сроки, контрольные точки.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="stepCard">
+                <div class="stepTop">
+                  <div class="stepNum">Шаг 4</div>
+                  <div class="node" aria-hidden="true"></div>
+                </div>
+                <h3 class="stepTitle">План-факт</h3>
+                <div class="stepText">Еженедельный ритм: что сделано, что не сделано, почему, что меняем.</div>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="stepCard">
+                <div class="stepTop">
+                  <div class="stepNum">Шаг 5</div>
+                  <div class="node" aria-hidden="true"></div>
+                </div>
+                <h3 class="stepTitle">Закрепление</h3>
+                <div class="stepText">Переводим результат в систему: метрики, роли, регламенты, ответственность.</div>
+              </div>
+            </div>
           </div>
 
-          <div class="card reveal">
-            <div class="pill" style="width:max-content;margin-bottom:10px">Шаг 2</div>
-            <div class="metric" style="font-size:18px">Цель на 3 месяца</div>
-            <div class="cap">Фиксация критериев успеха под ваш бизнес. Выбираем 1-2 точки влияния на деньги и управляемость.</div>
+          <div class="chips" style="margin-top:14px">
+            <div class="chip">Инструменты: РнП</div>
+            <div class="chip">План-факт</div>
+            <div class="chip">Финмодель</div>
+            <div class="chip">Оргструктура</div>
+            <div class="chip">KPI</div>
+            <div class="chip">CRM</div>
           </div>
-
-          <div class="card reveal">
-            <div class="pill" style="width:max-content;margin-bottom:10px">Шаг 3</div>
-            <div class="metric" style="font-size:18px">Спринт</div>
-            <div class="cap">Задачи, ответственные, сроки, метрика контроля. Если нет ответственного и срока, задачи нет.</div>
-          </div>
-        </div>
-
-        <div style="height:14px"></div>
-
-        <div class="grid2">
-          <div class="card reveal">
-            <div class="pill" style="width:max-content;margin-bottom:10px">Шаг 4</div>
-            <div class="metric" style="font-size:18px">План-факт и контрольные точки</div>
-            <div class="cap">Еженедельная встреча: план-факт, разбор отклонений, корректировка. Ритм фиксирует результат.</div>
-          </div>
-
-          <div class="card reveal">
-            <div class="pill" style="width:max-content;margin-bottom:10px">Шаг 5</div>
-            <div class="metric" style="font-size:18px">Закрепление через систему</div>
-            <div class="cap">Метрики, регламенты, роли и ответственность. Управление становится спокойным и предсказуемым.</div>
-          </div>
-        </div>
-
-        <div class="chips">
-          <div class="chip">РнП</div>
-          <div class="chip">План-факт</div>
-          <div class="chip">Финмодель (PnL, при необходимости ДДС)</div>
-          <div class="chip">Оргструктура и зоны ответственности</div>
-          <div class="chip">KPI и контроль исполнения</div>
-          <div class="chip">CRM (если нужна дисциплина продаж)</div>
         </div>
       </div>
     </section>
 
-    <!-- COMPETENCIES -->
     <section>
       <div class="container">
         <div class="title">
           <div>
             <h2>Ключевые компетенции</h2>
-            <div class="subtitle">Системность и оцифровка, чтобы решения превращались в исполнение и результат.</div>
+            <div class="subtitle">Суть проста: делаем управляемость через систему и доводим до исполнения.</div>
           </div>
         </div>
 
         <div class="grid3">
           <div class="card reveal">
             <div class="metric" style="font-size:18px">Системность</div>
-            <div class="cap">Процессы и KPI так, чтобы исполнение держалось на правилах, а не на настроении.</div>
+            <div class="cap">Собираю управленческий скелет: роли, ответственность, правила, ритм.</div>
           </div>
           <div class="card reveal">
             <div class="metric" style="font-size:18px">Оцифровка</div>
-            <div class="cap">Воронки, финмодели, метрики. Прозрачность и контроль без ручного тушения пожаров.</div>
+            <div class="cap">Метрики, дашборды, план-факт. Решения принимаются не по ощущениям.</div>
           </div>
           <div class="card reveal">
-            <div class="metric" style="font-size:18px">Метрики</div>
-            <div class="cap">Управление через контрольные точки: что считаем, где берем цифры, как часто смотрим.</div>
+            <div class="metric" style="font-size:18px">Исполнение</div>
+            <div class="cap">Контрольные точки, встреча по ритму, доведение задач до результата.</div>
           </div>
           <div class="card reveal">
-            <div class="metric" style="font-size:18px">Выявление смыслов</div>
-            <div class="cap">Упаковка смыслов и ценности, чтобы усиливать продажи без демпинга и суеты.</div>
+            <div class="metric" style="font-size:18px">Диагностика</div>
+            <div class="cap">Нахожу узкие места и точки влияния, которые реально двигают результат.</div>
           </div>
           <div class="card reveal">
-            <div class="metric" style="font-size:18px">Менеджмент</div>
-            <div class="cap">Команды, роли, ответственность, ритм. Управлял коллективами до 48 человек.</div>
+            <div class="metric" style="font-size:18px">Команды</div>
+            <div class="cap">Настройка взаимодействия: кто за что отвечает, как измеряем, как контролируем.</div>
           </div>
           <div class="card reveal">
-            <div class="metric" style="font-size:18px">Найм и делегирование</div>
-            <div class="cap">Нахожу сильных специалистов и выстраиваю управление так, чтобы они давали нужный результат.</div>
+            <div class="metric" style="font-size:18px">Инструменты</div>
+            <div class="cap">Внедрение управленческих инструментов под задачу, а не ради красоты.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRODUCTS -->
-    <section id="products">
+    <section id="formats">
       <div class="container">
         <div class="title">
           <div>
             <h2>Форматы работы</h2>
-            <div class="subtitle">Вход всегда через бизнес-разбор. Дальше выбираем режим под цель и контекст.</div>
           </div>
         </div>
 
-        <div class="grid3">
-          <div class="card reveal">
-            <div class="pill" style="width:max-content">Вход</div>
-            <div class="metric" style="font-size:18px;margin-top:10px">Бизнес-разбор</div>
-            <div class="cap">1-1,5 часа. Быстро фиксируем реальность, узкие места, первые приоритеты и план ближайшего спринта.</div>
-            <div class="price">
-              <b>10 000 ₽</b>
-              <span>без "воды" и без теории</span>
+        <div class="formats reveal">
+          <div class="grid3">
+            <div class="card">
+              <div class="metric" style="font-size:18px">Бизнес-разбор</div>
+              <div class="cap">Диагностика, точки влияния, первичный план действий и фокус на ближайший спринт.</div>
+              <div class="formatCardActions">
+                <a class="btn btn--primary" href="#contacts">Записаться</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="metric" style="font-size:18px">Бизнес-трекинг</div>
+              <div class="cap">Сопровождение спринтами: цель, план-факт, контрольные точки, закрепление через систему.</div>
+              <div class="formatCardActions">
+                <a class="btn" href="#contacts">Узнать подробнее</a>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="metric" style="font-size:18px">Бизнес-инжиниринг</div>
+              <div class="cap">Внедрение управленческих инструментов под задачу: чтобы появился результат и удерживался системой.</div>
+              <div class="formatCardActions">
+                <a class="btn" href="#contacts">Записаться на консультацию</a>
+              </div>
             </div>
           </div>
-
-          <div class="card reveal">
-            <div class="pill" style="width:max-content">Ядро</div>
-            <div class="metric" style="font-size:18px;margin-top:10px">Бизнес-трекинг</div>
-            <div class="cap">Сопровождение спринтами. Цель, дисциплина исполнения, план-факт, контрольные точки, закрепление результата через систему.</div>
-            <div class="price">
-              <b>от 100 000 ₽ / мес</b>
-              <span>минимум 3 месяца</span>
-            </div>
-          </div>
-
-          <div class="card reveal">
-            <div class="pill" style="width:max-content">Ускорение</div>
-            <div class="metric" style="font-size:18px;margin-top:10px">Спринт управления</div>
-            <div class="cap">Быстро собираем скелет управления: оргструктура, финмодель, РнП, базовая система метрик и отчетности.</div>
-            <div class="price">
-              <b>по задаче</b>
-              <span>под цель бизнеса</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="note" style="margin-top:16px">
-          Границы ответственности: я отвечаю за систему движения к цели. Вы отвечаете за действия и внедрение.
         </div>
       </div>
     </section>
 
-    <!-- CASES -->
-    <section id="cases">
+    <section id="experience">
       <div class="container">
         <div class="title">
           <div>
             <h2>Предпринимательский опыт</h2>
-            <div class="subtitle">Несколько кейсов из прошлого опыта. Дальше можно расширить блоком "крупные бренды" и логотипами.</div>
           </div>
         </div>
 
         <div class="grid3">
           <div class="card reveal">
-            <div class="pill" style="width:max-content">Nikolenko SMM</div>
-            <div class="metric" style="font-size:18px;margin-top:10px">SMM агентство</div>
+            <div class="workHeader">
+              <div class="logoSlot" title="Сюда можно вставить логотип">
+                LOGO
+              </div>
+              <div class="workHeaderText">
+                <p class="workName">Nikolenko SMM</p>
+                <div class="pill" style="width:max-content">SMM агентство</div>
+              </div>
+            </div>
             <ul class="list" style="margin-top:12px">
-              <li><span class="check" aria-hidden="true"></span><span>5+ лет работы</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>3 года - средний LTV клиентов</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>52,3% - рентабельность</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>2 часа в неделю на управление</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>5+ лет работы</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>3 года - средний LTV клиентов</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>52,3% - рентабельность</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>2 часа в неделю на управление</span></li>
             </ul>
           </div>
 
           <div class="card reveal">
-            <div class="pill" style="width:max-content">BRUNO</div>
-            <div class="metric" style="font-size:18px;margin-top:10px">Сеть пиццерий</div>
+            <div class="workHeader">
+              <div class="logoSlot" title="Сюда можно вставить логотип">
+                LOGO
+              </div>
+              <div class="workHeaderText">
+                <p class="workName">BRUNO</p>
+                <div class="pill" style="width:max-content">Сеть пиццерий</div>
+              </div>
+            </div>
             <ul class="list" style="margin-top:12px">
-              <li><span class="check" aria-hidden="true"></span><span>4,5 года работы</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>4 города в Краснодарском крае</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>За 3 года вышли на франшизу</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>158 млн ₽+ оборот в год</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>4,5 года работы</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>4 города в Краснодарском крае</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>Франшиза через 3 года</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>158 млн ₽+ оборот в год</span></li>
             </ul>
           </div>
 
           <div class="card reveal">
-            <div class="pill" style="width:max-content">"Будем Дудь"</div>
-            <div class="metric" style="font-size:18px;margin-top:10px">Оформление праздников</div>
+            <div class="workHeader">
+              <div class="logoSlot" title="Сюда можно вставить логотип">
+                LOGO
+              </div>
+              <div class="workHeaderText">
+                <p class="workName">"Будем Дудь"</p>
+                <div class="pill" style="width:max-content">Оформление праздников</div>
+              </div>
+            </div>
             <ul class="list" style="margin-top:12px">
-              <li><span class="check" aria-hidden="true"></span><span>3 года работы</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>ТОП 3 среди 48 конкурентов в городе за 1 год</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>73% повторных заказов</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>43% рентабельность</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>3 года работы</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>ТОП 3 среди 48 конкурентов за 1 год</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>73% повторных заказов</span></li>
+              <li><span class="tickbox" aria-hidden="true"></span><span>43% рентабельность</span></li>
             </ul>
           </div>
         </div>
 
         <div class="card reveal" style="margin-top:14px">
-          <h2 style="margin-bottom:10px">Крупные бренды</h2>
-          <div class="cap">Этот блок удобнее сделать логотипами. Сюда добавим изображения в `assets/logos/` и выстроим сеткой.</div>
-          <div class="chips">
-            <div class="chip">Логотип 1</div>
-            <div class="chip">Логотип 2</div>
-            <div class="chip">Логотип 3</div>
-            <div class="chip">Логотип 4</div>
+          <h2 style="margin-bottom:12px">Бренды, с которыми работал</h2>
+          <div class="logos">
+            <div class="logoBox"><span>LOGO 1</span></div>
+            <div class="logoBox"><span>LOGO 2</span></div>
+            <div class="logoBox"><span>LOGO 3</span></div>
+            <div class="logoBox"><span>LOGO 4</span></div>
+            <div class="logoBox"><span>LOGO 5</span></div>
+            <div class="logoBox"><span>LOGO 6</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRINCIPLES -->
     <section id="principles">
       <div class="container">
         <div class="title">
           <div>
             <h2>Принципы</h2>
-            <div class="subtitle">Правила, которые держат результат. Это не лозунги, это способ управления.</div>
           </div>
         </div>
 
         <div class="grid2">
           <div class="card reveal">
             <ul class="list">
-              <li><span class="check" aria-hidden="true"></span><span>Решения принимаются на основе цифр</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Сначала система, потом масштабирование</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Бизнес работает на собственника</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Эффективность важнее занятости</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Решения принимаются на основе цифр</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Ритм важнее разовых рывков</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>План-факт как базовая дисциплина</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Если нет ответственного и срока, задачи нет</span></li>
             </ul>
           </div>
 
           <div class="card reveal">
             <ul class="list">
-              <li><span class="check" aria-hidden="true"></span><span>Управление должно быть спокойным: без героизма</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>План-факт - базовая дисциплина</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Если нет ответственного и срока, задачи нет</span></li>
-              <li><span class="check" aria-hidden="true"></span><span>Цель на 2 недели: один спринт, одна точка влияния</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Управление должно быть спокойным, без героизма</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Фокус на точках влияния, а не на суете</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Сначала управляемость, потом масштабирование</span></li>
+              <li><span class="bullet" aria-hidden="true"></span><span>Результат закрепляется системой, а не мотивацией</span></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section id="cta">
+    <section id="contacts">
       <div class="container">
-        <div class="cta reveal">
+        <div class="title">
           <div>
-            <h3>Запись на бизнес-разбор</h3>
-            <p>
-              На разборе фиксируем реальную картину бизнеса, цель и ограничения, выбираем точки влияния и формируем план спринта.
-              Дальше вы решаете, нужен ли трекинг и в каком режиме.
-            </p>
-
-            <div class="chips" style="margin-top:16px">
-              <div class="chip">1-1,5 часа</div>
-              <div class="chip">10 000 ₽</div>
-              <div class="chip">Фокус на цифры и план-факт</div>
-              <div class="chip">РФ и СНГ</div>
-            </div>
-
-            <div class="note" style="margin-top:14px">
-              Важно: GitHub Pages - статический хостинг. Эта форма сама по себе ничего не отправляет.
-              Ниже я сделал отправку через "mailto" (откроется ваш почтовый клиент). Если захотите нормальную отправку в Telegram или на почту, подключим Formspree или свой эндпоинт.
-            </div>
+            <h2>Контакты</h2>
+            <div class="subtitle">Заполни форму, и одним кликом отправь готовое сообщение в Telegram, WhatsApp или на email.</div>
           </div>
+        </div>
 
-          <form class="form" id="leadForm">
-            <div class="field">
-              <div class="label">Ваше имя</div>
-              <input name="name" autocomplete="name" placeholder="Например, Алексей" required>
-            </div>
-            <div class="field">
-              <div class="label">Телефон или Telegram</div>
-              <input name="contact" placeholder="+7... или @username" required>
-            </div>
-            <div class="field">
-              <div class="label">Коротко: выручка, команда, цель</div>
-              <textarea name="message" placeholder="Выручка в месяц, команда, что хотите изменить за 3 месяца" required></textarea>
+        <div class="contacts reveal">
+          <div class="contactsGrid">
+            <div>
+              <div class="pill" style="width:max-content"><span class="dot"></span>Связаться со мной</div>
+              <p class="lead" style="margin-top:12px; max-width: 62ch;">
+                Если хочешь быстро и по делу, напиши: текущая ситуация, цель на 3 месяца и что сейчас не получается удержать в управлении.
+              </p>
+
+              <div class="contactLinks">
+                <a class="btn" id="tgLink" href="#" target="_blank" rel="noreferrer">Написать в Telegram</a>
+                <a class="btn" id="waLink" href="#" target="_blank" rel="noreferrer">Написать в WhatsApp</a>
+                <a class="btn" id="mailLink" href="#">Написать на email</a>
+              </div>
+
+              <div class="cap" style="margin-top:12px">
+                Можно не заполнять форму, но тогда ссылка будет без текста.
+              </div>
             </div>
 
-            <button class="btn btn--primary" type="submit">Сформировать заявку</button>
+            <form class="form" id="leadForm">
+              <div class="field">
+                <div class="label">Ваше имя</div>
+                <input name="name" autocomplete="name" placeholder="Например, Алексей" required>
+              </div>
+              <div class="field">
+                <div class="label">Контакт для обратной связи</div>
+                <input name="contact" placeholder="+7... или @username" required>
+              </div>
+              <div class="field">
+                <div class="label">Коротко: выручка, команда, цель</div>
+                <textarea name="message" placeholder="Выручка в месяц, команда, цель на 3 месяца, где сейчас провал по управлению" required></textarea>
+              </div>
 
-            <div class="form__note">
-              Нажимая кнопку, вы формируете заявку и открываете письмо. Данные останутся у вас, пока вы сами не отправите.
-            </div>
+              <button class="btn btn--primary" type="submit">Обновить ссылки на отправку</button>
 
-            <div class="links" style="margin-top:6px">
-              <a class="btn btn--ghost" href="mailto:youremail@example.com">E-mail</a>
-              <a class="btn btn--ghost" href="https://t.me/USERNAME" target="_blank" rel="noreferrer">Telegram</a>
-              <a class="btn btn--ghost" href="https://wa.me/79999999999" target="_blank" rel="noreferrer">WhatsApp</a>
-            </div>
-          </form>
+              <div class="form__note">
+                Эта кнопка не отправляет данные на сервер. Она просто формирует текст и обновляет ссылки для Telegram, WhatsApp и email.
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -1061,20 +1336,18 @@
             <div class="brand__mark" aria-hidden="true"></div>
             <div class="brand__txt">
               <div class="brand__name">Владимир Николенко</div>
-              <div class="brand__role">Система управления - цифры, роли, ритм, план-факт</div>
+              <div class="brand__role">Бизнес-трекер</div>
             </div>
           </div>
           <small>
             География: РФ и СНГ. Формат: онлайн. Вход: бизнес-разбор.<br>
-            © <span id="y"></span> Все права защищены.
+            © <span id="y"></span>
           </small>
         </div>
 
-        <div class="links">
+        <div class="actions">
           <a class="btn" href="#top">Наверх</a>
-          <a class="btn" href="#products">Форматы</a>
-          <a class="btn" href="#method">Метод</a>
-          <a class="btn btn--ghost" href="https://t.me/USERNAME" target="_blank" rel="noreferrer">Telegram</a>
+          <a class="btn" href="#contacts">Связаться</a>
         </div>
       </div>
     </div>
@@ -1093,31 +1366,82 @@
         }
       }
     }, { threshold: 0.14 });
-
     document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-    // lead form: mailto fallback (для GitHub Pages без бэкенда)
-    const form = document.getElementById("leadForm");
-    form.addEventListener("submit", (ev) => {
-      ev.preventDefault();
+    // scroll-driven background dynamics
+    const root = document.documentElement;
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
+    function onScroll(){
+      const doc = document.documentElement;
+      const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+      const t = clamp(window.scrollY / max, 0, 1);
+
+      // subtle motion
+      const shiftX = Math.round((t * 24 - 12) * 10) / 10;   // -12..12
+      const shiftY = Math.round((t * 30 - 15) * 10) / 10;   // -15..15
+      const grid = Math.round(t * 22 * 10) / 10;            // 0..22
+
+      root.style.setProperty("--scroll", t.toFixed(4));
+      root.style.setProperty("--bgShiftX", shiftX + "px");
+      root.style.setProperty("--bgShiftY", shiftY + "px");
+      root.style.setProperty("--gridShift", grid + "px");
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Contacts: generate message + links
+    const TG_USERNAME = "YOUR_TG_USERNAME";      // без @
+    const WA_PHONE = "79999999999";              // без +, только цифры
+    const EMAIL = "youremail@example.com";
+
+    const form = document.getElementById("leadForm");
+    const tgLink = document.getElementById("tgLink");
+    const waLink = document.getElementById("waLink");
+    const mailLink = document.getElementById("mailLink");
+
+    function buildText(){
       const fd = new FormData(form);
       const name = (fd.get("name") || "").toString().trim();
       const contact = (fd.get("contact") || "").toString().trim();
       const message = (fd.get("message") || "").toString().trim();
 
-      const subject = encodeURIComponent("Заявка на бизнес-разбор");
-      const body = encodeURIComponent(
-        "Имя: " + name + "\\n" +
-        "Контакт: " + contact + "\\n\\n" +
-        "Описание: " + message + "\\n\\n" +
-        "Источник: сайт-визитка (GitHub Pages)"
-      );
+      const text =
+        "Привет! Меня зовут " + name + ".\n" +
+        "Контакт для связи: " + contact + "\n\n" +
+        "Коротко о ситуации:\n" + message + "\n\n" +
+        "Хочу записаться на бизнес-разбор.";
 
-      // замени на свой email
-      const to = "youremail@example.com";
-      window.location.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
+      return text;
+    }
+
+    function refreshLinks(){
+      const text = buildText();
+      const enc = encodeURIComponent(text);
+
+      // Telegram: deep link with start?message is unreliable, use share
+      tgLink.href = "https://t.me/" + TG_USERNAME + "?text=" + enc;
+
+      // WhatsApp
+      waLink.href = "https://wa.me/" + WA_PHONE + "?text=" + enc;
+
+      // Email
+      const subject = encodeURIComponent("Запрос на бизнес-разбор");
+      mailLink.href = "mailto:" + EMAIL + "?subject=" + subject + "&body=" + enc;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      refreshLinks();
+      // small UX hint without alerts
+      const btn = form.querySelector("button[type='submit']");
+      const old = btn.textContent;
+      btn.textContent = "Готово, можно отправлять";
+      setTimeout(() => btn.textContent = old, 1200);
     });
+
+    // initial links (empty text if form not filled)
+    refreshLinks();
   </script>
 </body>
 </html>
