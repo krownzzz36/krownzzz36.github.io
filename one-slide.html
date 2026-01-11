@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Владимир Николенко - цифры и факты</title>
-  <meta name="description" content="Владимир Николенко - предприниматель-практик, человек-система. Цифры, опыт, компетенции, бренды. Один экран." />
+  <meta name="description" content="Владимир Николенко - предприниматель-практик, человек-система. Один экран: цифры, опыт, компетенции, бренды." />
 
   <meta property="og:title" content="Владимир Николенко - цифры и факты" />
   <meta property="og:description" content="Один экран. Сухие факты: цифры, опыт, компетенции." />
@@ -21,7 +21,7 @@
       --bg1:#0e141d;
 
       --border:rgba(255,255,255,.14);
-      --border2:rgba(255,255,255,.20);
+      --border2:rgba(255,255,255,.22);
 
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.72);
@@ -37,7 +37,7 @@
       --shadowHover:0 22px 70px rgba(0,0,0,.62);
 
       --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      --max:1360px;
+      --max:1400px;
     }
 
     *{ box-sizing:border-box; }
@@ -82,11 +82,26 @@
       gap:12px;
     }
 
+    /* HOVER */
+    @media (hover:hover) and (pointer:fine){
+      .box, .kpiCard, .exp, .brand{
+        transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
+        will-change: transform;
+      }
+      .box:hover, .kpiCard:hover, .exp:hover, .brand:hover{
+        transform: translateY(-2px) scale(1.01);
+        box-shadow: var(--shadowHover);
+        border-color: var(--border2);
+        background: rgba(255,255,255,.05);
+      }
+    }
+
     .left, .right{
       min-width:0;
       display:flex;
       flex-direction:column;
       gap:10px;
+      height:100%;
     }
 
     .box{
@@ -105,35 +120,24 @@
       margin:0 0 8px 0;
     }
 
-    /* HOVER */
-    @media (hover:hover) and (pointer:fine){
-      .box, .kpiCard, .exp, .brand{
-        transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
-        will-change: transform;
-      }
-      .box:hover, .kpiCard:hover, .exp:hover, .brand:hover{
-        transform: translateY(-2px) scale(1.01);
-        box-shadow: var(--shadowHover);
-        border-color: var(--border2);
-        background: rgba(255,255,255,.05);
-      }
-    }
-
-    /* LEFT: BIG PHOTO */
+    /* LEFT: BIG PHOTO TOP */
     .heroPhoto{
-      flex:1;
-      min-height:360px;
+      position:relative;
       border-radius:var(--radius2);
       border:1px solid var(--border);
       overflow:hidden;
-      position:relative;
       background:rgba(0,0,0,.18);
+
+      /* ключ: чтобы снизу осталось место под цифры */
+      flex:1 1 auto;
+      min-height:260px;
     }
 
     .heroPhoto img{
       width:100%;
       height:100%;
       object-fit:cover;
+      object-position: 50% 35%;
       display:block;
       transform:scale(1.02);
       filter:contrast(1.05) saturate(1.02);
@@ -144,9 +148,9 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(900px 520px at 30% 20%, rgba(34,58,107,.42), transparent 62%),
-        radial-gradient(900px 520px at 80% 45%, rgba(42,110,87,.35), transparent 64%),
-        linear-gradient(180deg, rgba(11,15,20,.25) 0%, rgba(11,15,20,.55) 55%, rgba(11,15,20,.88) 100%);
+        radial-gradient(900px 520px at 30% 20%, rgba(34,58,107,.40), transparent 62%),
+        radial-gradient(900px 520px at 80% 45%, rgba(42,110,87,.34), transparent 64%),
+        linear-gradient(180deg, rgba(11,15,20,.20) 0%, rgba(11,15,20,.55) 58%, rgba(11,15,20,.90) 100%);
       pointer-events:none;
     }
 
@@ -163,7 +167,7 @@
 
     .h1{
       margin:0;
-      font-size:clamp(24px, 2.6vw, 38px);
+      font-size:clamp(26px, 2.7vw, 40px);
       line-height:1.02;
       letter-spacing:-.02em;
       text-transform:uppercase;
@@ -172,7 +176,7 @@
 
     .sub{
       margin:0;
-      color:rgba(255,255,255,.80);
+      color:rgba(255,255,255,.82);
       font-size:clamp(12px, 1.1vw, 14px);
       line-height:1.25;
       text-shadow:0 10px 26px rgba(0,0,0,.55);
@@ -204,7 +208,14 @@
       background:rgba(34,58,107,.22);
     }
 
-    /* KPI + NICHES BOTTOM LEFT */
+    /* LEFT BOTTOM: KPI + NICHES (как ты просишь) */
+    .leftBottom{
+      flex:0 0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
     .kpiGrid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -256,6 +267,10 @@
     }
 
     /* RIGHT */
+    .right{
+      justify-content:flex-start;
+    }
+
     .expGrid{
       display:grid;
       gap:8px;
@@ -267,15 +282,15 @@
       background:rgba(255,255,255,.03);
       padding:10px;
       display:grid;
-      grid-template-columns: 52px 1fr;
+      grid-template-columns: 56px 1fr;
       gap:10px;
       align-items:center;
       min-width:0;
     }
 
     .logoImg{
-      width:52px;
-      height:52px;
+      width:56px;
+      height:56px;
       border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(0,0,0,.25);
@@ -339,8 +354,8 @@
     }
 
     .brand{
-      width:148px;
-      height:56px;
+      width:160px;
+      height:60px;
       border-radius:16px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(255,255,255,.04);
@@ -359,7 +374,7 @@
       display:block;
     }
 
-    /* MOBILE */
+    /* MOBILE: скролл включаем */
     @media (max-width: 980px){
       body{ overflow:auto; }
       .wrap{
@@ -377,16 +392,17 @@
         height:auto;
         grid-template-columns: 1fr;
       }
-      .heroPhoto{ min-height:360px; }
+      .left, .right{ height:auto; }
+      .heroPhoto{ min-height:420px; }
       .kpiGrid{ grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 520px){
       .wrap{ padding:12px; }
       .inner{ padding:12px; gap:10px; }
-      .heroPhoto{ min-height:420px; }
       .kpiGrid{ grid-template-columns: repeat(2, 1fr); }
-      .brand{ width:46%; height:62px; }
+      .brand{ width:46%; height:64px; }
+      .heroPhoto{ min-height:520px; }
     }
   </style>
 </head>
@@ -396,13 +412,11 @@
     <section class="slide" aria-label="Один экран. Цифры и факты.">
       <div class="inner">
 
-        <!-- LEFT -->
+        <!-- LEFT: фото сверху, цифры снизу -->
         <div class="left">
 
-          <!-- BIG PHOTO + TITLE -->
           <div class="heroPhoto">
             <img src="assets/photo.jpg" alt="Владимир Николенко" />
-
             <div class="heroOverlay">
               <h1 class="h1">ВЛАДИМИР НИКОЛЕНКО</h1>
               <p class="sub">Предприниматель-практик. Человек-система.</p>
@@ -416,44 +430,44 @@
             </div>
           </div>
 
-          <!-- KPI BELOW -->
-          <div class="kpiGrid">
-            <div class="kpiCard">
-              <p class="kpi">10 лет</p>
-              <div class="kpiLbl">в коммерции</div>
+          <div class="leftBottom">
+            <div class="kpiGrid">
+              <div class="kpiCard">
+                <p class="kpi">10 лет</p>
+                <div class="kpiLbl">в коммерции</div>
+              </div>
+              <div class="kpiCard">
+                <p class="kpi">7 лет</p>
+                <div class="kpiLbl">бизнес-опыта</div>
+              </div>
+              <div class="kpiCard">
+                <p class="kpi">4 года</p>
+                <div class="kpiLbl">бизнес-трекер</div>
+              </div>
+              <div class="kpiCard">
+                <p class="kpi">2530+ ч</p>
+                <div class="kpiLbl">бизнес-разборы (команда М. Дашкиева)</div>
+              </div>
+              <div class="kpiCard">
+                <p class="kpi">330 млн ₽+</p>
+                <div class="kpiLbl">оборот проектов в год</div>
+              </div>
+              <div class="kpiCard">
+                <p class="kpi">до 48</p>
+                <div class="kpiLbl">человек в управлении</div>
+              </div>
             </div>
-            <div class="kpiCard">
-              <p class="kpi">7 лет</p>
-              <div class="kpiLbl">бизнес-опыта</div>
-            </div>
-            <div class="kpiCard">
-              <p class="kpi">4 года</p>
-              <div class="kpiLbl">бизнес-трекер</div>
-            </div>
-            <div class="kpiCard">
-              <p class="kpi">2530+ ч</p>
-              <div class="kpiLbl">бизнес-разборы (команда М. Дашкиева)</div>
-            </div>
-            <div class="kpiCard">
-              <p class="kpi">330 млн ₽+</p>
-              <div class="kpiLbl">оборот проектов в год</div>
-            </div>
-            <div class="kpiCard">
-              <p class="kpi">до 48</p>
-              <div class="kpiLbl">человек в управлении</div>
-            </div>
-          </div>
 
-          <!-- NICHES -->
-          <div class="box">
-            <p class="cap">Опыт в нишах</p>
-            <div class="chipRow">
-              <span class="chip">EDTECH</span>
-              <span class="chip">HoReCa</span>
-              <span class="chip">EVENT</span>
-              <span class="chip">DIGITAL-агентства</span>
-              <span class="chip">Консалтинг</span>
-              <span class="chip">FASHION</span>
+            <div class="box">
+              <p class="cap">Опыт в нишах</p>
+              <div class="chipRow">
+                <span class="chip">EDTECH</span>
+                <span class="chip">HoReCa</span>
+                <span class="chip">EVENT</span>
+                <span class="chip">DIGITAL-агентства</span>
+                <span class="chip">Консалтинг</span>
+                <span class="chip">FASHION</span>
+              </div>
             </div>
           </div>
 
