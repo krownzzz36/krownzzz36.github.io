@@ -862,19 +862,38 @@
       .btn:hover, .card:hover, .chip:hover, .stepCard:hover, .logoBox:hover{ transform:none; }
       body:before{ background-position: 0 0; }
     }
-    /* Testimonials slider */
+   /* Testimonials (images slider) */
+#reviews.section{
+  padding: var(--sec-pad, 56px) 0;
+}
+
+#reviews .secHead{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+#reviews .secHead p{
+  margin: 8px 0 0 0;
+  color: rgba(169,180,192,.9);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .tWrap{
   border: 1px solid rgba(42,52,64,.65);
   background: rgba(22,27,34,.45);
-  border-radius: var(--radius2);
+  border-radius: var(--radius2, 22px);
   padding: 14px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow, 0 18px 50px rgba(0,0,0,.08));
 }
 
 .tTrack{
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(320px, 420px);
+  grid-auto-columns: minmax(260px, 420px);
   gap: 12px;
 
   overflow-x: auto;
@@ -896,64 +915,72 @@
   background-clip: padding-box;
 }
 
-.tCard{
+.tCardImg{
+  margin: 0;
   scroll-snap-align: start;
   border: 1px solid rgba(191,199,213,.14);
   background: rgba(28,35,43,.42);
   border-radius: 18px;
-  padding: 16px;
-  min-height: 180px;
+  padding: 10px;
+  height: 220px;
 
   display: flex;
-  flex-direction: column;
-  gap: 14px;
+  align-items: center;
+  justify-content: center;
 
   transition: .22s ease;
 }
 
-.tCard:hover{
+.tCardImg:hover{
   transform: translateY(-2px);
   border-color: rgba(191,199,213,.24);
   background: rgba(28,35,43,.62);
-  box-shadow: var(--shadow2);
+  box-shadow: var(--shadow2, 0 10px 30px rgba(0,0,0,.06));
 }
 
-.tText{
-  color: rgba(231,237,245,.9);
-  font-size: 14px;
-  line-height: 1.6;
+.tCardImg img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
 }
 
-.tMeta b{
-  display: block;
-  font-family: Montserrat, Inter, sans-serif;
-  font-size: 14px;
-  letter-spacing: .2px;
+/* Кнопка: делаем реально кнопкой, даже если у тебя другой базовый стиль */
+.btn.primary{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 16px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(11,61,145,.45);
+  background: rgba(11,61,145,.18);
+  color: rgba(231,237,245,.95);
+  text-decoration: none;
+
+  transition: .18s ease;
 }
 
-.tMeta span{
-  display: block;
-  margin-top: 4px;
-  color: rgba(169,180,192,.95);
-  font-size: 12px;
-}
-
-.tHint{
-  margin-top: 10px;
-  color: rgba(169,180,192,.88);
-  font-size: 12px;
-  line-height: 1.4;
-}
-
-.tMore{
-  margin-top: 14px;
-  display: flex;
-  justify-content: flex-start;
+.btn.primary:hover{
+  transform: translateY(-1px);
+  border-color: rgba(11,61,145,.75);
+  background: rgba(11,61,145,.26);
 }
 
 @media (max-width: 980px){
+  #reviews .secHead{
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .tTrack{
-    grid-auto-columns: minmax(260px, 86vw);
+    grid-auto-columns: minmax(240px, 86vw);
+  }
+
+  .tCardImg{
+    height: 200px;
   }
 }
   </style>
@@ -1369,68 +1396,59 @@
     </section>
 
     <!-- TESTIMONIALS -->
-<section id="reviews">
+<!-- TESTIMONIALS -->
+<section id="reviews" class="section">
   <div class="wrap">
     <div class="secHead reveal">
       <div>
         <h2>Отзывы</h2>
-        <p>Короткие фрагменты. Больше отзывов - по кнопке.</p>
+        <p>Скриншоты. Листайте вправо.</p>
       </div>
 
-      <a class="btn" href="https://t.me/+oySxZ-zEDowxY2Zi" target="_blank" rel="noopener">
+      <a class="btn primary"
+         href="https://t.me/+oySxZ-zEDowxY2Zi"
+         target="_blank"
+         rel="noopener">
         Больше отзывов
       </a>
     </div>
 
     <div class="tWrap reveal">
       <div class="tTrack" aria-label="Галерея отзывов">
-        <!-- Карточка 1 -->
-        <article class="tCard">
-          <div class="tText">
-            "Тут текст отзыва. 2-6 строк, без простыней. Акцент на результате и ясности."
-          </div>
-          <div class="tMeta">
-            <b>Имя Фамилия</b>
-            <span>Должность, компания</span>
-          </div>
-        </article>
-
-        <!-- Карточка 2 -->
-        <article class="tCard">
-          <div class="tText">
-            "Тут второй отзыв. Можно про то, как стало спокойнее управлять и появились цифры."
-          </div>
-          <div class="tMeta">
-            <b>Имя Фамилия</b>
-            <span>Ниша, город</span>
-          </div>
-        </article>
-
-        <!-- Карточка 3 -->
-        <article class="tCard">
-          <div class="tText">
-            "Третий отзыв. Лучше коротко и конкретно: что было, что сделали, что стало."
-          </div>
-          <div class="tMeta">
-            <b>Имя Фамилия</b>
-            <span>Роль, проект</span>
-          </div>
-        </article>
-
-        <!-- Добавляйте новые tCard по аналогии -->
+        <!-- 10 карточек со скриншотами. Просто замените src на свои файлы -->
+        <figure class="tCardImg">
+          <img src="assets/reviews/01.jpg" alt="Отзыв 1" loading="lazy">
+        </figure>
+        <figure class="tCardImg">
+          <img src="assets/reviews/02.jpg" alt="Отзыв 2" loading="lazy">
+        </figure>
+        <figure class="tCardImg">
+          <img src="assets/reviews/03.jpg" alt="Отзыв 3" loading="lazy">
+        </figure>
+        <figure class="tCardImg">
+          <img src="assets/reviews/04.jpg" alt="Отзыв 4" loading="lazy">
+        </figure>
+        <figure class="tCardImg">
+          <img src="assets/reviews/05.jpg" alt="Отзыв 5" loading="lazy">
+        </figure>
+        <figure class="tCardImg">
+          <img src="assets/reviews/06.jpg" alt="Отзыв 6" loading="lazy">
+        </figure>
+        <figure class="tCardImg">
+          <img src="assets/reviews/07.jpg" alt="Отзыв 7" loading="lazy">
+        </figure>
+        <figure class="tCardImg">
+          <img src="assets/reviews/08.jpg" alt="Отзыв 8" loading="lazy">
+        </figure>
+        <figure class="tCardImg">
+          <img src="assets/reviews/09.jpg" alt="Отзыв 9" loading="lazy">
+        </figure>
+        <figure class="tCardImg">
+          <img src="assets/reviews/10.jpg" alt="Отзыв 10" loading="lazy">
+        </figure>
       </div>
     </div>
-
-    <div class="tHint reveal" style="transition-delay:.08s">
-      Листайте горизонтально. На телефоне удобнее пальцем, на компьютере - трекпадом или колесом с Shift.
-    </div>
   </div>
-  <div class="tMore reveal" style="transition-delay:.12s">
-  <a class="btn primary" href="https://t.me/+oySxZ-zEDowxY2Zi" target="_blank" rel="noopener">
-    <span class="dot" aria-hidden="true"></span>
-    Больше отзывов
-  </a>
-</div>
 </section>
     
     <section id="contacts">
