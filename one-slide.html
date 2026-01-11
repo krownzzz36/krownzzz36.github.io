@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Владимир Николенко - цифры и факты</title>
-  <meta name="description" content="Владимир Николенко - предприниматель-практик, человек-система. Цифры, ниши, опыт, компетенции, бренды. Один экран." />
+  <meta name="description" content="Владимир Николенко - предприниматель-практик, человек-система. Цифры, опыт, компетенции, бренды. Один экран." />
 
   <meta property="og:title" content="Владимир Николенко - цифры и факты" />
   <meta property="og:description" content="Один экран. Сухие факты: цифры, опыт, компетенции." />
@@ -20,9 +20,7 @@
       --bg0:#0b0f14;
       --bg1:#0e141d;
 
-      --card:rgba(255,255,255,.06);
       --border:rgba(255,255,255,.14);
-
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.70);
       --dim:rgba(255,255,255,.55);
@@ -32,10 +30,12 @@
 
       --radius:22px;
       --radius2:16px;
+
       --shadow:0 18px 60px rgba(0,0,0,.55);
+      --shadowHover:0 22px 70px rgba(0,0,0,.62);
 
       --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      --max:1280px;
+      --max:1320px;
     }
 
     *{ box-sizing:border-box; }
@@ -50,7 +50,7 @@
         radial-gradient(900px 600px at 82% 30%, rgba(42,110,87,.40), transparent 62%),
         radial-gradient(1200px 800px at 50% 100%, rgba(255,255,255,.07), transparent 60%),
         linear-gradient(160deg, var(--bg0), var(--bg1));
-      overflow:hidden; /* один экран */
+      overflow:hidden; /* desktop: один экран */
     }
 
     .wrap{
@@ -76,7 +76,7 @@
       height:100%;
       padding:16px;
       display:grid;
-      grid-template-columns: 1.02fr .98fr;
+      grid-template-columns: 1.05fr .95fr;
       gap:12px;
     }
 
@@ -103,22 +103,37 @@
       margin:0 0 8px 0;
     }
 
+    /* HOVER ANIMATION */
+    @media (hover:hover) and (pointer:fine){
+      .box, .kpiCard, .exp, .brand{
+        transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
+        will-change: transform;
+      }
+      .box:hover, .kpiCard:hover, .exp:hover, .brand:hover{
+        transform: translateY(-2px) scale(1.01);
+        box-shadow: var(--shadowHover);
+        border-color: rgba(255,255,255,.22);
+        background: rgba(255,255,255,.05);
+      }
+    }
+
     /* HERO */
     .hero{
       display:grid;
-      grid-template-columns: 92px 1fr;
+      grid-template-columns: 108px 1fr;
       gap:12px;
       align-items:center;
     }
 
     .avatar{
-      width:92px;
-      height:92px;
-      border-radius:18px;
+      width:108px;
+      height:108px;
+      border-radius:20px;
       border:1px solid var(--border);
       overflow:hidden;
       background:rgba(255,255,255,.04);
       position:relative;
+      flex:0 0 auto;
     }
     .avatar img{
       width:100%;
@@ -131,14 +146,14 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(78px 78px at 20% 20%, rgba(255,255,255,.10), transparent 55%),
-        radial-gradient(90px 90px at 80% 80%, rgba(42,110,87,.12), transparent 60%);
+        radial-gradient(88px 88px at 20% 20%, rgba(255,255,255,.10), transparent 55%),
+        radial-gradient(100px 100px at 80% 80%, rgba(42,110,87,.12), transparent 60%);
       pointer-events:none;
     }
 
     .h1{
       margin:0;
-      font-size:clamp(22px, 2.2vw, 32px);
+      font-size:clamp(22px, 2.35vw, 34px);
       line-height:1.05;
       letter-spacing:-.02em;
       white-space:nowrap;
@@ -195,7 +210,7 @@
 
     .kpi{
       margin:0;
-      font-size:clamp(16px, 1.7vw, 22px);
+      font-size:clamp(16px, 1.75vw, 22px);
       font-weight:850;
       letter-spacing:-.01em;
       line-height:1.05;
@@ -230,6 +245,45 @@
       white-space:nowrap;
     }
 
+    /* BIG PHOTO FILLER (убирает пустоту) */
+    .photoBig{
+      flex:1;
+      min-height:180px;
+      padding:0;
+      overflow:hidden;
+      position:relative;
+      border-radius:var(--radius2);
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.18);
+    }
+    .photoBig img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+      filter: contrast(1.05) saturate(1.02);
+    }
+    .photoBig:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(11,15,20,.88) 0%, rgba(11,15,20,.35) 42%, rgba(11,15,20,.15) 100%),
+        radial-gradient(700px 360px at 20% 20%, rgba(34,58,107,.35), transparent 60%),
+        radial-gradient(700px 360px at 70% 60%, rgba(42,110,87,.30), transparent 62%);
+      pointer-events:none;
+    }
+    .photoBig .badge{
+      position:absolute;
+      left:12px;
+      bottom:12px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      z-index:2;
+    }
+
     /* EXPERIENCE */
     .expGrid{
       display:grid;
@@ -242,15 +296,15 @@
       background:rgba(255,255,255,.03);
       padding:10px;
       display:grid;
-      grid-template-columns: 44px 1fr;
+      grid-template-columns: 48px 1fr;
       gap:10px;
       align-items:center;
       min-width:0;
     }
 
     .logoImg{
-      width:44px;
-      height:44px;
+      width:48px;
+      height:48px;
       border-radius:12px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(0,0,0,.25);
@@ -306,25 +360,23 @@
       white-space:nowrap;
     }
 
-    /* BRANDS */
+    /* BRANDS (крупнее + больше логотипы) */
     .brands{
       display:flex;
-      gap:8px;
+      gap:10px;
       align-items:center;
-      flex-wrap:nowrap;
-      overflow:hidden;
+      flex-wrap:wrap; /* чтобы не резать */
     }
 
     .brand{
-      width:86px;
-      height:36px;
-      border-radius:12px;
+      width:120px;
+      height:46px;
+      border-radius:14px;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.03);
       display:flex;
       align-items:center;
       justify-content:center;
-      flex:0 0 auto;
       overflow:hidden;
     }
 
@@ -332,24 +384,41 @@
       width:100%;
       height:100%;
       object-fit:contain;
-      padding:6px 8px;
-      filter:saturate(1.05);
-      opacity:.92;
+      padding:6px 10px;
+      opacity:.96;
       display:block;
     }
 
-    /* FIT */
+    /* MOBILE SCROLL FIX */
     @media (max-width: 980px){
-      .inner{ grid-template-columns: 1fr; }
+      body{ overflow:auto; }
+      .wrap{
+        height:auto;
+        min-height:100vh;
+        align-items:flex-start;
+      }
+      .slide{
+        height:auto;
+        min-height:calc(100vh - 36px);
+        overflow:auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .inner{
+        height:auto;
+        grid-template-columns: 1fr;
+      }
+      .photoBig{ min-height:220px; }
       .kpiGrid{ grid-template-columns: repeat(3, 1fr); }
     }
+
     @media (max-width: 520px){
       .wrap{ padding:12px; }
       .inner{ padding:12px; gap:10px; }
-      .hero{ grid-template-columns: 78px 1fr; }
-      .avatar{ width:78px; height:78px; border-radius:16px; }
+      .hero{ grid-template-columns: 96px 1fr; }
+      .avatar{ width:96px; height:96px; border-radius:18px; }
       .kpiGrid{ grid-template-columns: repeat(2, 1fr); }
-      .brand{ width:80px; }
+      .brand{ width:46%; height:48px; }
+      .photoBig{ min-height:240px; }
     }
   </style>
 </head>
@@ -418,6 +487,15 @@
               <span class="chip">DIGITAL-агентства</span>
               <span class="chip">Консалтинг</span>
               <span class="chip">FASHION</span>
+            </div>
+          </div>
+
+          <!-- Большая фотка, чтобы не было пустоты -->
+          <div class="photoBig">
+            <img src="assets/photo.jpg" alt="Владимир Николенко" />
+            <div class="badge">
+              <span class="tag bl">предприниматель</span>
+              <span class="tag em">человек-система</span>
             </div>
           </div>
 
@@ -493,13 +571,18 @@
             <p class="cap">Крупные бренды, с которыми работал</p>
             <div class="brands" aria-label="Логотипы брендов">
               <div class="brand"><img src="assets/dodo.webp" alt="Dodo" /></div>
-              <div class="brand"><img src="assets/askonaipg.jpg" alt="Askona" /></div>
+
+              <!-- askonajpg.jpg добавил, но сделал запасной вариант на старое имя -->
+              <div class="brand">
+                <img src="assets/askonajpg.jpg" alt="Askona"
+                     onerror="this.onerror=null; this.src='assets/askonaipg.jpg';" />
+              </div>
+
               <div class="brand"><img src="assets/myata.webp" alt="Myata" /></div>
               <div class="brand"><img src="assets/mybox.webp" alt="MyBox" /></div>
 
-              <!-- Если хочешь добавить еще, просто дублируй:
-              <div class="brand"><img src="assets/ИМЯ_ФАЙЛА" alt="Brand" /></div>
-              -->
+              <!-- samolet.png -->
+              <div class="brand"><img src="assets/samolet.png" alt="Samolet" /></div>
             </div>
           </div>
 
